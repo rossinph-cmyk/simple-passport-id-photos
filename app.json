@@ -56,7 +56,7 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow (Photo For ID Maker) to access your camera",
+          "cameraPermission": "Allow (Photo For ID Maker) to access your camera"
         }
       ],
       [
