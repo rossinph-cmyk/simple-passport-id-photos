@@ -36,9 +36,7 @@ Correct a dot jason with only needed  permissions
         "CAMERA",
         "READ_MEDIA_IMAGES",
         "READ_MEDIA_VISUAL_USER_SELECTED",
-        "android.permission.WRITE_MEDIA_IMAGES",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
+        "android.permission.WRITE_MEDIA_IMAGES"
       ]
     },
     "web": {
