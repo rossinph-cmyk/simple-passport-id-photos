@@ -19,8 +19,7 @@
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos",
         "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access your camera",
-        "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos.",
-        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+        "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos."
       }
     },
     "android": {
@@ -36,13 +35,7 @@
         "READ_MEDIA_VISUAL_USER_SELECTED",
         "android.permission.WRITE_MEDIA_IMAGES",
         "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE",
-        "RECORD_AUDIO",
-        "android.permission.VIBRATE",
-        "INTERNET",
-        "READ_MEDIA_VIDEO",
-        "READ_MEDIA_AUDIO",
-        "ACCESS_MEDIA_LOCATION"
+        "WRITE_EXTERNAL_STORAGE"
       ]
     },
     "web": {
@@ -64,17 +57,14 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow (Photo For ID Maker) to access your camera",
-          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
-          "recordAudioAndroid": false
+          "cameraPermission": "Allow (Photo For ID Maker) to access your camera"
         }
       ],
       [
         "expo-media-library",
         {
           "photosPermission": "Allow (Photo For ID Maker) to access your photos.",
-          "savePhotosPermission": "Allow (Photo For ID Maker) to save photos.",
-          "isAccessMediaLocationEnabled": false,
+          "savePhotosPermission": "Allow (Photo For ID Maker) to save photos."
           "androidPermissions": [
             "READ_MEDIA_IMAGES",
             "READ_MEDIA_VISUAL_USER_SELECTED"
