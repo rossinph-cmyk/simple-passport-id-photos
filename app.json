@@ -64,7 +64,8 @@
         "expo-media-library",
         {
           "photosPermission": "Allow (Photo For ID Maker) to access your photos.",
-          "savePhotosPermission": "Allow (Photo For ID Maker) to save photos."
+          "savePhotosPermission": "Allow (Photo For ID Maker) to save photos.",
+          "isAccessMediaLocationEnabled": false,
           "androidPermissions": [
             "READ_MEDIA_IMAGES",
             "READ_MEDIA_VISUAL_USER_SELECTED"
