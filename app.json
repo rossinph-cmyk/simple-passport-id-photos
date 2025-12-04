@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Photo For ID Maker",
-    "slug": "ph-id-maker-2-0",
+    "name": "EZ Passport ID Photo",
+    "slug": "ez-passport-id-photo",
     "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "ezpassport",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
     "splash": {
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "app.rork.ph-id-maker-2-0",
+      "bundleIdentifier": "com.ezpassportid.app",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos",
         "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access your camera",
@@ -27,7 +27,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.rossinph.phidmaker20",
+      "package": "com.ezpassportid.app",
       "versionCode": 7,
       "permissions": [
         "CAMERA",
@@ -43,27 +43,27 @@
       [
         "expo-router",
         {
-          "origin": "https://rork.com/"
+          "origin": "https://ezpassportid.app/"
         }
       ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow (Photo For ID Maker) to access your photos"
+          "photosPermission": "Allow EZ Passport ID Photo to access your photos"
         }
       ],
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow (Photo For ID Maker) to access your camera",
+          "cameraPermission": "Allow EZ Passport ID Photo to access your camera",
           "recordAudioAndroid": false
         }
       ],
       [
         "expo-media-library",
         {
-          "photosPermission": "Allow (Photo For ID Maker) to access your photos.",
-          "savePhotosPermission": "Allow (Photo For ID Maker) to save photos.",
+          "photosPermission": "Allow EZ Passport ID Photo to access your photos.",
+          "savePhotosPermission": "Allow EZ Passport ID Photo to save photos.",
           "isAccessMediaLocationEnabled": false,
           "androidPermissions": [
             "READ_MEDIA_IMAGES",
@@ -78,13 +78,13 @@
     },
     "extra": {
       "router": {
-        "origin": "https://rork.com/"
+        "origin": "https://ezpassportid.app/"
       },
       "eas": {
         "projectId": "d0744897-d760-46cf-88fd-7094a8d05a03"
       }
     },
-    "owner": "rossinph",
+    "owner": "ezpassport",
     "privacyPolicy": "https://docs.google.com/document/d/e/2PACX-1vSjsY9QbbhEQwk5j7Kp9Q7Q-6lNt_mPqKXQgDZCHj79bI_KO3L1Doq7CgVuVdM6yvG3vFqImYKiUrAC/pub"
   }
 }
