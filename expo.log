@@ -1,0 +1,13 @@
++ exec gosu vibecode node node_modules/.bin/expo start --localhost
+PluginError: Failed to resolve plugin for module "expo-router" relative to "/home/user/workspace". Do you have node modules installed?
+PluginError: Failed to resolve plugin for module "expo-router" relative to "/home/user/workspace". Do you have node modules installed?
+    at resolvePluginForModule (/home/user/workspace/node_modules/@expo/config-plugins/build/utils/plugin-resolver.js:96:9)
+    at resolveConfigPluginFunctionWithInfo (/home/user/workspace/node_modules/@expo/config-plugins/build/utils/plugin-resolver.js:145:7)
+    at resolveConfigPluginFunction (/home/user/workspace/node_modules/@expo/config-plugins/build/utils/plugin-resolver.js:136:7)
+    at withStaticPlugin (/home/user/workspace/node_modules/@expo/config-plugins/build/plugins/withStaticPlugin.js:85:70)
+    at /home/user/workspace/node_modules/@expo/config-plugins/build/plugins/withPlugins.js:30:84
+    at Array.reduce (<anonymous>)
+    at withPlugins (/home/user/workspace/node_modules/@expo/config-plugins/build/plugins/withPlugins.js:30:18)
+    at withConfigPlugins (/home/user/workspace/node_modules/@expo/config/build/plugins/withConfigPlugins.js:35:47)
+    at fillAndReturnConfig (/home/user/workspace/node_modules/@expo/config/build/Config.js:236:78)
+    at getConfig (/home/user/workspace/node_modules/@expo/config/build/Config.js:293:10)
