@@ -35,3 +35,8 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 .vercel
+
+# secrets and credentials - ignore all JSON files except essential configs
+the-axiom-*.json
+*.json.local
+.env*.json
