@@ -305,6 +305,10 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      {/* Themed background overlay */}
+      <View style={styles.backgroundOverlay}>
+        {theme === 'american' ? <AmericanThemedBackground /> : <IndianThemedBackground />}
+      </View>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} scrollEnabled={!isPanningImage}>
         <View style={styles.header}>
           <View style={styles.headerContent}>
@@ -750,8 +754,9 @@ const croppingStyles = StyleSheet.create({
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f8f9fa' },
+  backgroundOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 },
   scrollView: { flex: 1 },
-  header: { backgroundColor: 'white', paddingVertical: 20, paddingHorizontal: 20, borderBottomWidth: 1, borderBottomColor: '#e9ecef', position: 'relative' },
+  header: { backgroundColor: 'rgba(255, 255, 255, 0.95)', paddingVertical: 20, paddingHorizontal: 20, borderBottomWidth: 1, borderBottomColor: '#e9ecef', position: 'relative' },
   headerContent: { flexDirection: 'row', alignItems: 'center' },
   flagContainer: { marginRight: 15 },
   flag: { width: 40, height: 24, borderRadius: 4, overflow: 'hidden', borderWidth: 1, borderColor: '#ddd', flexDirection: 'column', position: 'relative' },
@@ -770,18 +775,18 @@ const styles = StyleSheet.create({
   heartButton: { position: 'absolute', top: 20, right: 20, padding: 5 },
   instructionBanner: { backgroundColor: '#fff3cd', marginHorizontal: 20, marginBottom: 15, padding: 15, borderRadius: 12, borderLeftWidth: 4, borderLeftColor: '#ffc107' },
   bannerText: { fontSize: 14, color: '#856404', fontWeight: '600', textAlign: 'center', lineHeight: 20 },
-  themeButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginHorizontal: 20, marginBottom: 15, paddingVertical: 12, paddingHorizontal: 15, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#dee2e6', gap: 8 },
+  themeButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginHorizontal: 20, marginBottom: 15, paddingVertical: 12, paddingHorizontal: 15, backgroundColor: 'rgba(255, 255, 255, 0.95)', borderRadius: 12, borderWidth: 1, borderColor: '#dee2e6', gap: 8 },
   themeButtonText: { fontSize: 14, fontWeight: '600', color: '#0038A8' },
   featuresButton: { margin: 20, borderRadius: 12, overflow: 'hidden' },
   featuresGradient: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 15, paddingHorizontal: 20 },
   featuresButtonText: { color: 'white', fontSize: 16, fontWeight: '600', marginLeft: 8 },
-  sizeSection: { backgroundColor: 'white', marginHorizontal: 20, marginBottom: 20, borderRadius: 12, padding: 20 },
+  sizeSection: { backgroundColor: 'rgba(255, 255, 255, 0.95)', marginHorizontal: 20, marginBottom: 20, borderRadius: 12, padding: 20 },
   sizeRow: { flexDirection: 'row', gap: 15 },
   sizeColumn: { flex: 1 },
   sizeLabel: { fontSize: 16, fontWeight: '600', color: '#333', marginBottom: 8 },
   dropdown: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#f8f9fa', borderWidth: 1, borderColor: '#dee2e6', borderRadius: 8, paddingHorizontal: 12, paddingVertical: 12 },
   dropdownText: { fontSize: 14, color: '#333', flex: 1 },
-  previewSection: { backgroundColor: 'white', marginHorizontal: 20, marginBottom: 20, borderRadius: 12, padding: 20 },
+  previewSection: { backgroundColor: 'rgba(255, 255, 255, 0.95)', marginHorizontal: 20, marginBottom: 20, borderRadius: 12, padding: 20 },
   previewTitle: { fontSize: 16, fontWeight: '600', color: '#333', marginBottom: 15 },
   previewContainer: { alignItems: 'center' },
   previewBox: { width: '100%', height: 300, backgroundColor: '#f8f9fa', borderWidth: 2, borderColor: '#dee2e6', borderStyle: 'dashed', borderRadius: 8, position: 'relative', overflow: 'hidden' },
@@ -798,7 +803,7 @@ const styles = StyleSheet.create({
   actionButtonWrapper: { borderRadius: 12, overflow: 'hidden' },
   actionButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 16, gap: 10 },
   actionButtonText: { color: 'white', fontSize: 16, fontWeight: '600' },
-  actionButtonSecondary: { backgroundColor: 'white', borderWidth: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 16, borderRadius: 12, gap: 10 },
+  actionButtonSecondary: { backgroundColor: 'rgba(255, 255, 255, 0.95)', borderWidth: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 16, borderRadius: 12, gap: 10 },
   actionButtonSecondaryText: { fontSize: 16, fontWeight: '600' },
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'center', alignItems: 'center' },
   modalContent: { backgroundColor: 'white', borderRadius: 16, padding: 24, margin: 20, maxHeight: '80%', minWidth: 300, gap: 12 },

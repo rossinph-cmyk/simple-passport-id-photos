@@ -5,9 +5,11 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 ## Recent Updates
 
 ### Background Theme Feature (Latest)
-- **Patriotic themed backgrounds with authentic flag designs**
-  - American theme: Red and white stripes with blue canton and stars (25% opacity)
-  - Indian theme: Saffron, white, and green horizontal bands with Ashoka Chakra (25% opacity)
+- **Full-screen translucent themed backgrounds**
+  - American theme: Full American flag pattern (red/white stripes with blue canton and stars) at 15% opacity covering the entire app background
+  - Indian theme: Full Indian flag pattern (saffron/white/green stripes with Ashoka Chakra) at 15% opacity covering the entire app background
+  - Semi-transparent white panels (95% opacity) overlay the themed background for content sections
+  - Creates an immersive patriotic atmosphere throughout the app
 - **Dynamic theme colors with pure, vibrant flag colors**
   - American theme uses pure colors: Crimson Red (#DC143C) and Pure Blue (#0000FF)
   - Indian theme uses official Indian flag colors: Saffron (#FF9933) and Green (#138808)
