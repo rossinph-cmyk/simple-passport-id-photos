@@ -21,7 +21,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { useThemeStore } from '../store/themeStore';
+import { useThemeStore, getThemeColors } from '../store/themeStore';
 import { AmericanThemedBackground, IndianThemedBackground } from '../components/ThemedBackgrounds';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -58,7 +58,7 @@ export default function HomeScreen() {
   const theme = useThemeStore(s => s.theme);
   const setTheme = useThemeStore(s => s.setTheme);
   const loadTheme = useThemeStore(s => s.loadTheme);
-  const themeColors = useThemeStore(s => s.getColors());
+  const themeColors = React.useMemo(() => getThemeColors(theme), [theme]);
 
   const [selectedIdSize, setSelectedIdSize] = useState<IdSize>(ID_SIZES[0]);
   const [selectedPaperSize, setSelectedPaperSize] = useState(PAPER_SIZES[0]);

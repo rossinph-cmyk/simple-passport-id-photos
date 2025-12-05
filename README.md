@@ -6,8 +6,8 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 
 ### Background Theme Feature (Latest)
 - **Patriotic themed backgrounds with authentic flag designs**
-  - American theme: Red and white stripes with blue canton and stars
-  - Indian theme: Saffron, white, and green horizontal bands with Ashoka Chakra
+  - American theme: Red and white stripes with blue canton and stars (25% opacity)
+  - Indian theme: Saffron, white, and green horizontal bands with Ashoka Chakra (25% opacity)
 - **Dynamic theme colors throughout the app**
   - All buttons use theme-specific gradient colors
   - Title, icons, and UI elements change to match selected theme
@@ -16,6 +16,7 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 - Added prominent instruction banner with visual guidance
 - Theme selection persists using AsyncStorage
 - Easy-to-use theme switcher with flag emojis
+- Fixed infinite loop issue with useMemo for theme colors
 
 ### Complete Rebranding
 - Renamed app from "EZ Passport ID Photo Maker" to "Simple Passport ID & Photos"
