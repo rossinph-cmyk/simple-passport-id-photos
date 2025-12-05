@@ -17,7 +17,7 @@ import { X, Download, Image as ImageIcon } from 'lucide-react-native';
 import * as MediaLibrary from 'expo-media-library';
 import * as Haptics from 'expo-haptics';
 import * as ImageManipulator from 'expo-image-manipulator';
-import * as FileSystem from 'expo-file-system/legacy';
+import { Paths, File } from 'expo-file-system';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 
@@ -81,8 +81,8 @@ export default function PreviewScreen() {
         // For mobile, use ImageManipulator with better error handling
         try {
           // First, check if the image file exists
-          const fileInfo = await FileSystem.getInfoAsync(imageUri);
-          if (!fileInfo.exists) {
+          const imageFile = new File(imageUri);
+          if (!imageFile.exists) {
 
             Alert.alert(
               'Image Not Found',
@@ -310,8 +310,8 @@ export default function PreviewScreen() {
 
             
             // Check if the file exists before trying to save
-            const fileInfo = await FileSystem.getInfoAsync(finalImageUri);
-            if (!fileInfo.exists) {
+            const finalFile = new File(finalImageUri);
+            if (!finalFile.exists) {
               throw new Error('Generated image file does not exist');
             }
             
@@ -659,10 +659,10 @@ export default function PreviewScreen() {
           );
           const padding = Math.round(DPI * 0.2);
           const whiteSourceUrl = 'https://singlecolorimage.com/get/ffffff/10x10.png';
-          const targetPath = `${FileSystem.cacheDirectory}white_${Date.now()}.png`;
-          const dl = await FileSystem.downloadAsync(whiteSourceUrl, targetPath);
+          const targetFile = new File(Paths.cache, `white_${Date.now()}.png`);
+          const downloadedFile = await File.downloadFileAsync(whiteSourceUrl, targetFile);
           const whiteBackground = await ImageManipulator.manipulateAsync(
-            dl.uri,
+            downloadedFile.uri,
             [{ resize: { width: paperWidthPx, height: paperHeightPx } }],
             { compress: 1.0, format: ImageManipulator.SaveFormat.JPEG }
           );
@@ -739,9 +739,8 @@ export default function PreviewScreen() {
   // Helper function to convert image to base64
   const convertImageToBase64 = async (imageUri: string): Promise<string> => {
     try {
-      const base64 = await FileSystem.readAsStringAsync(imageUri, {
-        encoding: FileSystem.EncodingType.Base64,
-      });
+      const imageFile = new File(imageUri);
+      const base64 = imageFile.base64();
       return base64;
     } catch (error) {
 
