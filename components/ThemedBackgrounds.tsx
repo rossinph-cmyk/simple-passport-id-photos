@@ -12,7 +12,7 @@ export function AmericanThemedBackground() {
             key={i}
             style={[
               styles.stripe,
-              { backgroundColor: i % 2 === 0 ? '#BF0A30' : '#FFFFFF' }
+              { backgroundColor: i % 2 === 0 ? '#DC143C' : '#FFFFFF' }
             ]}
           />
         ))}
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     left: 0,
     width: '40%',
     height: '54%',
-    backgroundColor: '#002868',
+    backgroundColor: '#0000FF',
   },
   starField: {
     flex: 1,

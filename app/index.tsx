@@ -311,9 +311,31 @@ export default function HomeScreen() {
             <View style={styles.flagContainer}>
               {theme === 'american' ? (
                 <View style={styles.flag}>
-                  <View style={styles.americanFlagBlue} />
-                  <View style={styles.americanFlagWhite} />
-                  <View style={styles.americanFlagRed} />
+                  {/* Red and white stripes */}
+                  {[...Array(7)].map((_, i) => (
+                    <View
+                      key={i}
+                      style={[
+                        styles.americanStripe,
+                        { backgroundColor: i % 2 === 0 ? '#DC143C' : '#FFFFFF' }
+                      ]}
+                    />
+                  ))}
+                  {/* Blue canton with white stars */}
+                  <View style={styles.americanCanton}>
+                    {[...Array(6)].map((_, i) => (
+                      <View
+                        key={i}
+                        style={[
+                          styles.miniStar,
+                          {
+                            top: Math.floor(i / 3) * 6 + 2,
+                            left: (i % 3) * 5 + 2
+                          }
+                        ]}
+                      />
+                    ))}
+                  </View>
                 </View>
               ) : (
                 <View style={styles.flag}>
@@ -464,7 +486,7 @@ export default function HomeScreen() {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Select Background Theme</Text>
             <TouchableOpacity
-              style={[styles.modalOption, theme === 'american' && { backgroundColor: '#BF0A30' }]}
+              style={[styles.modalOption, theme === 'american' && { backgroundColor: '#DC143C' }]}
               onPress={async () => {
                 await setTheme('american');
                 setShowThemeModal(false);
@@ -697,17 +719,17 @@ const croppingStyles = StyleSheet.create({
   overlayPart: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
   overlayRow: { flexDirection: 'row' },
   cropTransparent: { backgroundColor: 'transparent' },
-  cropArea: { position: 'absolute', borderWidth: 2, borderColor: '#002868', borderStyle: 'solid' },
+  cropArea: { position: 'absolute', borderWidth: 2, borderColor: '#0000FF', borderStyle: 'solid' },
   gridContainer: { flex: 1, position: 'relative' },
   gridLine: { position: 'absolute', backgroundColor: 'rgba(255, 255, 255, 0.8)', width: 1, height: '100%' },
   gridLineHorizontal: { width: '100%', height: 1 },
   sliderContainer: { position: 'absolute', left: 6, width: 48, zIndex: 20, justifyContent: 'center', alignItems: 'center' },
   sliderBody: { position: 'absolute', top: 10, bottom: 10, width: 40, alignItems: 'center', justifyContent: 'flex-end' },
   sliderTrack: { position: 'absolute', left: 16, right: 16, top: 0, bottom: 0, borderRadius: 8, backgroundColor: 'rgba(0,0,0,0.2)' },
-  sliderFill: { position: 'absolute', left: 16, right: 16, bottom: 0, borderBottomLeftRadius: 8, borderBottomRightRadius: 8, backgroundColor: '#002868' },
-  sliderThumb: { position: 'absolute', left: 6, right: 6, height: 20, borderRadius: 10, backgroundColor: '#BF0A30', borderWidth: 2, borderColor: '#fff', transform: [{ translateY: 10 }] },
+  sliderFill: { position: 'absolute', left: 16, right: 16, bottom: 0, borderBottomLeftRadius: 8, borderBottomRightRadius: 8, backgroundColor: '#0000FF' },
+  sliderThumb: { position: 'absolute', left: 6, right: 6, height: 20, borderRadius: 10, backgroundColor: '#DC143C', borderWidth: 2, borderColor: '#fff', transform: [{ translateY: 10 }] },
   sliderLabels: { position: 'absolute', top: -18, left: 0, right: 0, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 6 },
-  sliderLabelText: { color: '#002868', fontSize: 10, fontWeight: '700' },
+  sliderLabelText: { color: '#0000FF', fontSize: 10, fontWeight: '700' },
 });
 
 const styles = StyleSheet.create({
@@ -716,10 +738,10 @@ const styles = StyleSheet.create({
   header: { backgroundColor: 'white', paddingVertical: 20, paddingHorizontal: 20, borderBottomWidth: 1, borderBottomColor: '#e9ecef', position: 'relative' },
   headerContent: { flexDirection: 'row', alignItems: 'center' },
   flagContainer: { marginRight: 15 },
-  flag: { width: 40, height: 24, borderRadius: 4, overflow: 'hidden', borderWidth: 1, borderColor: '#ddd', flexDirection: 'column' },
-  americanFlagBlue: { flex: 1, backgroundColor: '#002868' },
-  americanFlagWhite: { flex: 1, backgroundColor: '#FFFFFF' },
-  americanFlagRed: { flex: 1, backgroundColor: '#BF0A30' },
+  flag: { width: 40, height: 24, borderRadius: 4, overflow: 'hidden', borderWidth: 1, borderColor: '#ddd', flexDirection: 'column', position: 'relative' },
+  americanStripe: { flex: 1, width: '100%' },
+  americanCanton: { position: 'absolute', top: 0, left: 0, width: '45%', height: '60%', backgroundColor: '#0000FF' },
+  miniStar: { position: 'absolute', width: 2, height: 2, backgroundColor: '#FFFFFF', borderRadius: 1 },
   indianFlagSaffron: { flex: 1, backgroundColor: '#FF9933' },
   indianFlagWhite: { flex: 1, backgroundColor: '#FFFFFF' },
   indianFlagGreen: { flex: 1, backgroundColor: '#138808' },
@@ -746,10 +768,10 @@ const styles = StyleSheet.create({
   previewBox: { width: '100%', height: 300, backgroundColor: '#f8f9fa', borderWidth: 2, borderColor: '#dee2e6', borderStyle: 'dashed', borderRadius: 8, position: 'relative', overflow: 'hidden' },
   placeholderContainer: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   gridOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
-  gridLine: { position: 'absolute', backgroundColor: '#002868', opacity: 0.3, width: 1, height: '100%', left: '50%', marginLeft: -0.5 },
+  gridLine: { position: 'absolute', backgroundColor: '#0000FF', opacity: 0.3, width: 1, height: '100%', left: '50%', marginLeft: -0.5 },
   gridLineHorizontal: { width: '100%', height: 1, top: '50%', left: 0, marginTop: -0.5 },
   watermark: { position: 'absolute', top: 10, right: 10, opacity: 0.3 },
-  watermarkText: { fontSize: 8, fontWeight: 'bold', color: '#002868', textAlign: 'center' },
+  watermarkText: { fontSize: 8, fontWeight: 'bold', color: '#0000FF', textAlign: 'center' },
   previewPlaceholder: { fontSize: 14, color: '#666', textAlign: 'center' },
   cropInstructions: { marginTop: 10, paddingHorizontal: 10 },
   instructionText: { fontSize: 12, color: '#666', textAlign: 'center', lineHeight: 16 },
@@ -763,7 +785,7 @@ const styles = StyleSheet.create({
   modalContent: { backgroundColor: 'white', borderRadius: 16, padding: 24, margin: 20, maxHeight: '80%', minWidth: 300, gap: 12 },
   modalTitle: { fontSize: 20, fontWeight: 'bold', color: '#333', marginBottom: 20, textAlign: 'center' },
   modalOption: { paddingVertical: 15, paddingHorizontal: 16, borderRadius: 8, marginBottom: 8 },
-  modalOptionSelected: { backgroundColor: '#002868' },
+  modalOptionSelected: { backgroundColor: '#0000FF' },
   modalOptionText: { fontSize: 16, color: '#333' },
   modalOptionTextSelected: { color: 'white', fontWeight: '600' },
   modalCloseButton: { marginTop: 20, paddingVertical: 12, alignItems: 'center' },

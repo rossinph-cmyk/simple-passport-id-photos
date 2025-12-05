@@ -8,15 +8,17 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 - **Patriotic themed backgrounds with authentic flag designs**
   - American theme: Red and white stripes with blue canton and stars (25% opacity)
   - Indian theme: Saffron, white, and green horizontal bands with Ashoka Chakra (25% opacity)
-- **Dynamic theme colors with official flag colors**
-  - American theme uses official US flag colors: Sharp Red (#BF0A30) and True Blue (#002868)
+- **Dynamic theme colors with pure, vibrant flag colors**
+  - American theme uses pure colors: Crimson Red (#DC143C) and Pure Blue (#0000FF)
   - Indian theme uses official Indian flag colors: Saffron (#FF9933) and Green (#138808)
   - All buttons use theme-specific gradient colors
   - Title, icons, and UI elements change to match selected theme
-- **Dynamic flag icon in header**
-  - Flag icon in top-left corner changes based on selected theme
-  - American theme displays US flag (blue, white, red horizontal stripes)
+- **Authentic American flag icon in header**
+  - Top-left corner displays a proper mini American flag with:
+    - Red and white horizontal stripes
+    - Blue canton with white stars
   - Indian theme displays Indian flag (saffron, white, green horizontal stripes)
+  - Flag icon changes dynamically based on selected theme
 - Added prominent instruction banner with visual guidance
 - Theme selection persists using AsyncStorage
 - Easy-to-use theme switcher with flag emojis
