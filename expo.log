@@ -3,3 +3,70 @@ Starting project at /home/user/workspace
 Starting Metro Bundler
 Waiting on http://localhost:8081
 Logs for your project will appear below.
+iOS node_modules/expo-router/entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+iOS Bundled 83ms node_modules/expo-router/entry.js (1 module)
+ ERROR  Warning: The result of getSnapshot should be cached to avoid an infinite loop
+
+[0m [90m 55 |[39m
+ [90m 56 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mHomeScreen[39m() {
+[31m[1m>[22m[39m[90m 57 |[39m   [36mconst[39m { capturedImageUri } [33m=[39m useLocalSearchParams[33m<[39m{ capturedImageUri[33m?[39m[33m:[39m string }[33m>[39m()[33m;[39m
+ [90m    |[39m                                                    [31m[1m^[22m[39m
+ [90m 58 |[39m   [36mconst[39m theme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39mtheme)[33m;[39m
+ [90m 59 |[39m   [36mconst[39m setTheme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39msetTheme)[33m;[39m
+ [90m 60 |[39m   [36mconst[39m loadTheme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39mloadTheme)[33m;[39m[0m
+
+Call Stack
+  HomeScreen (app/index.tsx:57:52)
+  ScreenContentWrapper (<anonymous>)
+  RNSScreenStack (<anonymous>)
+  RootLayoutNav (<anonymous>)
+  ErrorBoundary (components/ErrorBoundary.tsx:6:35)
+  RootLayout (app/_layout.tsx:38:61)
+  RNCSafeAreaProvider (<anonymous>)
+  App (<anonymous>)
+  ErrorOverlay (<anonymous>)
+[Metro Cache] HttpStore get failed: Request timed out
+ ERROR  Warning: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+
+This error is located at:
+
+[0m [90m 55 |[39m
+ [90m 56 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mHomeScreen[39m() {
+[31m[1m>[22m[39m[90m 57 |[39m   [36mconst[39m { capturedImageUri } [33m=[39m useLocalSearchParams[33m<[39m{ capturedImageUri[33m?[39m[33m:[39m string }[33m>[39m()[33m;[39m
+ [90m    |[39m                                                    [31m[1m^[22m[39m
+ [90m 58 |[39m   [36mconst[39m theme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39mtheme)[33m;[39m
+ [90m 59 |[39m   [36mconst[39m setTheme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39msetTheme)[33m;[39m
+ [90m 60 |[39m   [36mconst[39m loadTheme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39mloadTheme)[33m;[39m[0m
+
+Call Stack
+  HomeScreen (app/index.tsx:57:52)
+  ScreenContentWrapper (<anonymous>)
+  RNSScreenStack (<anonymous>)
+  RootLayoutNav (<anonymous>)
+  ErrorBoundary (components/ErrorBoundary.tsx:6:35)
+  RootLayout (app/_layout.tsx:38:61)
+  RNCSafeAreaProvider (<anonymous>)
+  App (<anonymous>)
+  ErrorOverlay (<anonymous>)
+ ERROR  ErrorBoundary caught an error:
+[Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.]
+{"componentStack": "
+
+[0m [90m 55 |[39m
+ [90m 56 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mHomeScreen[39m() {
+[31m[1m>[22m[39m[90m 57 |[39m   [36mconst[39m { capturedImageUri } [33m=[39m useLocalSearchParams[33m<[39m{ capturedImageUri[33m?[39m[33m:[39m string }[33m>[39m()[33m;[39m
+ [90m    |[39m                                                    [31m[1m^[22m[39m
+ [90m 58 |[39m   [36mconst[39m theme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39mtheme)[33m;[39m
+ [90m 59 |[39m   [36mconst[39m setTheme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39msetTheme)[33m;[39m
+ [90m 60 |[39m   [36mconst[39m loadTheme [33m=[39m useThemeStore(s [33m=>[39m s[33m.[39mloadTheme)[33m;[39m[0m
+
+Call Stack
+  HomeScreen (app/index.tsx:57:52)
+  ScreenContentWrapper (<anonymous>)
+  RNSScreenStack (<anonymous>)
+  RootLayoutNav (<anonymous>)
+  ErrorBoundary (components/ErrorBoundary.tsx:6:35)
+  RootLayout (app/_layout.tsx:38:61)
+  RNCSafeAreaProvider (<anonymous>)
+  App (<anonymous>)
+  ErrorOverlay (<anonymous>)
