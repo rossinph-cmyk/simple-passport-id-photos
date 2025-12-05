@@ -75,7 +75,7 @@ export function IndianThemedBackground() {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    opacity: 1.0,
+    opacity: 0.35,
   },
   // American theme styles
   stripesContainer: {
