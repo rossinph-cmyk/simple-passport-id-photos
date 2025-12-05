@@ -39,3 +39,19 @@ The following packages should be updated for best compatibility with the install
 Your project may not work correctly until you install the expected versions of the packages.
 Waiting on http://localhost:8081
 Logs for your project will appear below.
+iOS Bundling failed 1798ms node_modules/expo-router/entry.js (1 module)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
+iOS Bundling failed 1797ms node_modules/expo-router/entry.js (1 module)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
+iOS Bundling failed 1800ms node_modules/expo-router/entry.js (3116 modules)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
+iOS Bundling failed 1234ms node_modules/expo-router/entry.js (3091 modules)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
+iOS Bundling failed 565ms node_modules/expo-router/entry.js (1 module)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
+iOS Bundling failed 564ms node_modules/expo-router/entry.js (1 module)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
+iOS Bundling failed 506ms node_modules/expo-router/entry.js (1 module)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
+iOS Bundling failed 690ms node_modules/expo-router/entry.js (3117 modules)
+Unable to resolve "expo-file-system/legacy" from "app/preview.tsx"
