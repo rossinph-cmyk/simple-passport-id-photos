@@ -366,8 +366,12 @@ export default function HomeScreen() {
               )}
             </View>
             <View style={styles.titleContainer}>
-              <Text style={[styles.title, { color: themeColors.primary }]}>Simple Passport ID & Photos</Text>
-              <Text style={styles.subtitle}>Professional ID Photos Made Easy</Text>
+              <Text style={[styles.title, { color: themeColors.primary }]}>
+                {theme === 'american' ? 'Simple Passport ID & Photos' : 'सरल पासपोर्ट आईडी और फोटो'}
+              </Text>
+              <Text style={styles.subtitle}>
+                {theme === 'american' ? 'Professional ID Photos Made Easy' : 'पेशेवर आईडी फोटो आसानी से बनाएं'}
+              </Text>
             </View>
           </View>
           <TouchableOpacity style={styles.heartButton}>
@@ -377,7 +381,11 @@ export default function HomeScreen() {
 
         {/* Instruction Banner */}
         <View style={styles.instructionBanner}>
-          <Text style={styles.bannerText}>📸 Please take a selfie or upload a picture on a plain white background</Text>
+          <Text style={styles.bannerText}>
+            {theme === 'american'
+              ? '📸 Please take a selfie or upload a picture on a plain white background'
+              : '📸 कृपया एक सादे सफेद पृष्ठभूमि पर एक सेल्फी लें या चित्र अपलोड करें'}
+          </Text>
         </View>
 
         {/* Theme Toggle Button */}
@@ -389,21 +397,21 @@ export default function HomeScreen() {
         <TouchableOpacity style={styles.featuresButton} onPress={() => setShowFeaturesModal(true)}>
           <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.featuresGradient}>
             <Info color="white" size={20} />
-            <Text style={styles.featuresButtonText}>Features</Text>
+            <Text style={styles.featuresButtonText}>{theme === 'american' ? 'Features' : 'विशेषताएँ'}</Text>
           </LinearGradient>
         </TouchableOpacity>
 
         <View style={styles.sizeSection}>
           <View style={styles.sizeRow}>
             <View style={styles.sizeColumn}>
-              <Text style={styles.sizeLabel}>ID Size</Text>
+              <Text style={styles.sizeLabel}>{theme === 'american' ? 'ID Size' : 'आईडी आकार'}</Text>
               <TouchableOpacity style={styles.dropdown} onPress={() => setShowIdSizeModal(true)}>
                 <Text style={styles.dropdownText}>{selectedIdSize.label}</Text>
                 <ChevronDown color="#666" size={20} />
               </TouchableOpacity>
             </View>
             <View style={styles.sizeColumn}>
-              <Text style={styles.sizeLabel}>Paper Size</Text>
+              <Text style={styles.sizeLabel}>{theme === 'american' ? 'Paper Size' : 'कागज का आकार'}</Text>
               <TouchableOpacity style={styles.dropdown} onPress={() => setShowPaperSizeModal(true)}>
                 <Text style={styles.dropdownText}>{selectedPaperSize.label}</Text>
                 <ChevronDown color="#666" size={20} />
@@ -413,7 +421,7 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.previewSection}>
-          <Text style={styles.previewTitle}>Photo Cropping</Text>
+          <Text style={styles.previewTitle}>{theme === 'american' ? 'Photo Cropping' : 'फोटो क्रॉपिंग'}</Text>
           <View style={styles.previewContainer}>
             <View style={styles.previewBox}>
               {selectedImage && imageLoaded ? (
@@ -433,14 +441,18 @@ export default function HomeScreen() {
                 <View style={styles.placeholderContainer}>
                   <View style={styles.gridOverlay}><View style={styles.gridLine} /><View style={[styles.gridLine, styles.gridLineHorizontal]} /></View>
                   <View style={styles.watermark}><Text style={styles.watermarkText}>PHOTO ID</Text><Text style={styles.watermarkText}>MAKER 2</Text></View>
-                  <Text style={styles.previewPlaceholder}>No photo selected</Text>
+                  <Text style={styles.previewPlaceholder}>{theme === 'american' ? 'No photo selected' : 'कोई फोटो नहीं चुनी गई'}</Text>
                 </View>
               )}
             </View>
           </View>
           {selectedImage && imageLoaded && (
             <View style={styles.cropInstructions}>
-              <Text style={styles.instructionText}>Drag the photo with one finger to reposition. Release to set.</Text>
+              <Text style={styles.instructionText}>
+                {theme === 'american'
+                  ? 'Drag the photo with one finger to reposition. Release to set.'
+                  : 'फोटो को स्थानांतरित करने के लिए एक उंगली से खींचें। सेट करने के लिए छोड़ें।'}
+              </Text>
             </View>
           )}
         </View>
@@ -451,12 +463,12 @@ export default function HomeScreen() {
               <TouchableOpacity style={styles.actionButtonWrapper} onPress={handleTakePicture}>
                 <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
                   <Camera color="white" size={24} />
-                  <Text style={styles.actionButtonText}>Take Picture</Text>
+                  <Text style={styles.actionButtonText}>{theme === 'american' ? 'Take Picture' : 'तस्वीर लें'}</Text>
                 </LinearGradient>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.actionButtonSecondary, { borderColor: themeColors.primary }]} onPress={handleSelectFromGallery}>
                 <ImageIcon color={themeColors.primary} size={24} />
-                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>Gallery</Text>
+                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>{theme === 'american' ? 'Gallery' : 'गैलरी'}</Text>
               </TouchableOpacity>
             </>
           ) : (
@@ -464,18 +476,18 @@ export default function HomeScreen() {
               <TouchableOpacity style={styles.actionButtonWrapper} onPress={() => handlePreview('single')}>
                 <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
                   <Eye color="white" size={24} />
-                  <Text style={styles.actionButtonText}>Preview Single Photo</Text>
+                  <Text style={styles.actionButtonText}>{theme === 'american' ? 'Preview Single Photo' : 'एकल फोटो पूर्वावलोकन'}</Text>
                 </LinearGradient>
               </TouchableOpacity>
               <TouchableOpacity style={styles.actionButtonWrapper} onPress={() => handlePreview('sheet')}>
                 <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
                   <Eye color="white" size={24} />
-                  <Text style={styles.actionButtonText}>Preview 3 Photos</Text>
+                  <Text style={styles.actionButtonText}>{theme === 'american' ? 'Preview 3 Photos' : '3 फोटो पूर्वावलोकन'}</Text>
                 </LinearGradient>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.actionButtonSecondary, { borderColor: themeColors.primary }]} onPress={handleClearImage}>
                 <ImageIcon color={themeColors.primary} size={24} />
-                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>Select New Photo</Text>
+                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>{theme === 'american' ? 'Select New Photo' : 'नई फोटो चुनें'}</Text>
               </TouchableOpacity>
             </>
           )}
@@ -487,24 +499,44 @@ export default function HomeScreen() {
 
       {/* ID Size Modal */}
       <Modal visible={showIdSizeModal} transparent animationType="slide">
-        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>Select ID Size</Text>{ID_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedIdSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedIdSize(size); setShowIdSizeModal(false); }}><Text style={[styles.modalOptionText, selectedIdSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowIdSizeModal(false)}><Text style={styles.modalCloseText}>Cancel</Text></TouchableOpacity></View></View>
+        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{theme === 'american' ? 'Select ID Size' : 'आईडी आकार चुनें'}</Text>{ID_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedIdSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedIdSize(size); setShowIdSizeModal(false); }}><Text style={[styles.modalOptionText, selectedIdSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowIdSizeModal(false)}><Text style={styles.modalCloseText}>{theme === 'american' ? 'Cancel' : 'रद्द करें'}</Text></TouchableOpacity></View></View>
       </Modal>
 
       {/* Paper Size Modal */}
       <Modal visible={showPaperSizeModal} transparent animationType="slide">
-        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>Select Paper Size</Text>{PAPER_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedPaperSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedPaperSize(size); setShowPaperSizeModal(false); }}><Text style={[styles.modalOptionText, selectedPaperSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowPaperSizeModal(false)}><Text style={styles.modalCloseText}>Cancel</Text></TouchableOpacity></View></View>
+        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{theme === 'american' ? 'Select Paper Size' : 'कागज का आकार चुनें'}</Text>{PAPER_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedPaperSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedPaperSize(size); setShowPaperSizeModal(false); }}><Text style={[styles.modalOptionText, selectedPaperSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowPaperSizeModal(false)}><Text style={styles.modalCloseText}>{theme === 'american' ? 'Cancel' : 'रद्द करें'}</Text></TouchableOpacity></View></View>
       </Modal>
 
       {/* Features Modal */}
       <Modal visible={showFeaturesModal} transparent animationType="fade">
-        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>App Features</Text><View style={styles.featuresList}><Text style={styles.featureItem}>• Multiple ID sizes (1x1, 1x1.5, 1x2, 2x2, 2x3 inches)</Text><Text style={styles.featureItem}>• Various paper sizes (A4, Letter, Long photo paper)</Text><Text style={styles.featureItem}>• Simple, precise photo positioning</Text><Text style={styles.featureItem}>• Grid overlay for perfect alignment</Text><Text style={styles.featureItem}>• Single photo or 3-photo sheet layouts</Text><Text style={styles.featureItem}>• Save directly to shareable PDF format</Text></View><TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowFeaturesModal(false)}><Text style={styles.modalCloseText}>Close</Text></TouchableOpacity></View></View>
+        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{theme === 'american' ? 'App Features' : 'ऐप सुविधाएँ'}</Text><View style={styles.featuresList}>
+        {theme === 'american' ? (
+          <>
+            <Text style={styles.featureItem}>• Multiple ID sizes (1x1, 1x1.5, 1x2, 2x2, 2x3 inches)</Text>
+            <Text style={styles.featureItem}>• Various paper sizes (A4, Letter, Long photo paper)</Text>
+            <Text style={styles.featureItem}>• Simple, precise photo positioning</Text>
+            <Text style={styles.featureItem}>• Grid overlay for perfect alignment</Text>
+            <Text style={styles.featureItem}>• Single photo or 3-photo sheet layouts</Text>
+            <Text style={styles.featureItem}>• Save directly to shareable PDF format</Text>
+          </>
+        ) : (
+          <>
+            <Text style={styles.featureItem}>• कई आईडी आकार (1x1, 1x1.5, 1x2, 2x2, 2x3 इंच)</Text>
+            <Text style={styles.featureItem}>• विभिन्न कागज के आकार (A4, Letter, लंबा फोटो पेपर)</Text>
+            <Text style={styles.featureItem}>• सरल, सटीक फोटो स्थिति</Text>
+            <Text style={styles.featureItem}>• सही संरेखण के लिए ग्रिड ओवरले</Text>
+            <Text style={styles.featureItem}>• एकल फोटो या 3-फोटो शीट लेआउट</Text>
+            <Text style={styles.featureItem}>• साझा करने योग्य पीडीएफ प्रारूप में सीधे सहेजें</Text>
+          </>
+        )}
+        </View><TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowFeaturesModal(false)}><Text style={styles.modalCloseText}>{theme === 'american' ? 'Close' : 'बंद करें'}</Text></TouchableOpacity></View></View>
       </Modal>
 
       {/* Theme Modal */}
       <Modal visible={showThemeModal} transparent animationType="slide">
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Select Background Theme</Text>
+            <Text style={styles.modalTitle}>{theme === 'american' ? 'Select Background Theme' : 'पृष्ठभूमि थीम चुनें'}</Text>
             <TouchableOpacity
               style={[styles.modalOption, theme === 'american' && { backgroundColor: '#DC143C' }]}
               onPress={async () => {
@@ -528,7 +560,7 @@ export default function HomeScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowThemeModal(false)}>
-              <Text style={styles.modalCloseText}>Cancel</Text>
+              <Text style={styles.modalCloseText}>{theme === 'american' ? 'Cancel' : 'रद्द करें'}</Text>
             </TouchableOpacity>
           </View>
         </View>

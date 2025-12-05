@@ -3,4 +3,5 @@ Starting project at /home/user/workspace
 Starting Metro Bundler
 Waiting on http://localhost:8081
 Logs for your project will appear below.
-iOS Bundled 73ms node_modules/expo-router/entry.js (1 module)
+iOS node_modules/expo-router/entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+iOS Bundled 68ms node_modules/expo-router/entry.js (1 module)
