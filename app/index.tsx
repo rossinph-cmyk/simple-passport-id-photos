@@ -383,7 +383,7 @@ export default function HomeScreen() {
         {/* Theme Toggle Button */}
         <TouchableOpacity style={styles.themeButton} onPress={() => setShowThemeModal(true)}>
           <Globe color={themeColors.primary} size={20} />
-          <Text style={[styles.themeButtonText, { color: themeColors.primary }]}>Background Theme: {theme === 'american' ? '🇺🇸 American' : '🕉️ Hindu'}</Text>
+          <Text style={[styles.themeButtonText, { color: themeColors.primary }]}>Background Theme: {theme === 'american' ? '🇺🇸 American' : '🇮🇳 Indian'}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.featuresButton} onPress={() => setShowFeaturesModal(true)}>
@@ -524,7 +524,7 @@ export default function HomeScreen() {
               }}
             >
               <Text style={[styles.modalOptionText, theme === 'indian' && styles.modalOptionTextSelected]}>
-                🕉️ Hindu Theme
+                🇮🇳 Indian Theme
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowThemeModal(false)}>
