@@ -21,8 +21,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { useThemeStore, getThemeColors } from '../store/themeStore';
-import { AmericanThemedBackground, IndianThemedBackground } from '../components/ThemedBackgrounds';
+import { useThemeStore, getThemeColors, AppTheme } from '../store/themeStore';
+import { ThemedBackground } from '../components/ThemedBackgrounds';
+import { getTranslation } from '../utils/translations';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -307,7 +308,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       {/* Themed background overlay */}
       <View style={styles.backgroundOverlay}>
-        {theme === 'american' ? <AmericanThemedBackground /> : <IndianThemedBackground />}
+        <ThemedBackground theme={theme} />
       </View>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} scrollEnabled={!isPanningImage}>
         <View style={styles.header}>
@@ -367,10 +368,10 @@ export default function HomeScreen() {
             </View>
             <View style={styles.titleContainer}>
               <Text style={[styles.title, { color: themeColors.primary }]}>
-                {theme === 'american' ? 'Simple Passport ID & Photos' : 'सरल पासपोर्ट आईडी और फोटो'}
+                {getTranslation(theme, 'appTitle')}
               </Text>
               <Text style={styles.subtitle}>
-                {theme === 'american' ? 'Professional ID Photos Made Easy' : 'पेशेवर आईडी फोटो आसानी से बनाएं'}
+                {getTranslation(theme, 'appSubtitle')}
               </Text>
             </View>
           </View>
@@ -382,36 +383,34 @@ export default function HomeScreen() {
         {/* Instruction Banner */}
         <View style={styles.instructionBanner}>
           <Text style={styles.bannerText}>
-            {theme === 'american'
-              ? '📸 Please take a selfie or upload a picture on a plain white background'
-              : '📸 कृपया एक सादे सफेद पृष्ठभूमि पर एक सेल्फी लें या चित्र अपलोड करें'}
+            {getTranslation(theme, 'instructionBanner')}
           </Text>
         </View>
 
         {/* Theme Toggle Button */}
         <TouchableOpacity style={styles.themeButton} onPress={() => setShowThemeModal(true)}>
           <Globe color={themeColors.primary} size={20} />
-          <Text style={[styles.themeButtonText, { color: themeColors.primary }]}>Background Theme: {theme === 'american' ? '🇺🇸 American' : '🇮🇳 Indian'}</Text>
+          <Text style={[styles.themeButtonText, { color: themeColors.primary }]}>{getTranslation(theme, 'backgroundTheme')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.featuresButton} onPress={() => setShowFeaturesModal(true)}>
           <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.featuresGradient}>
             <Info color="white" size={20} />
-            <Text style={styles.featuresButtonText}>{theme === 'american' ? 'Features' : 'विशेषताएँ'}</Text>
+            <Text style={styles.featuresButtonText}>{getTranslation(theme, 'features')}</Text>
           </LinearGradient>
         </TouchableOpacity>
 
         <View style={styles.sizeSection}>
           <View style={styles.sizeRow}>
             <View style={styles.sizeColumn}>
-              <Text style={styles.sizeLabel}>{theme === 'american' ? 'ID Size' : 'आईडी आकार'}</Text>
+              <Text style={styles.sizeLabel}>{getTranslation(theme, 'idSize')}</Text>
               <TouchableOpacity style={styles.dropdown} onPress={() => setShowIdSizeModal(true)}>
                 <Text style={styles.dropdownText}>{selectedIdSize.label}</Text>
                 <ChevronDown color="#666" size={20} />
               </TouchableOpacity>
             </View>
             <View style={styles.sizeColumn}>
-              <Text style={styles.sizeLabel}>{theme === 'american' ? 'Paper Size' : 'कागज का आकार'}</Text>
+              <Text style={styles.sizeLabel}>{getTranslation(theme, 'paperSize')}</Text>
               <TouchableOpacity style={styles.dropdown} onPress={() => setShowPaperSizeModal(true)}>
                 <Text style={styles.dropdownText}>{selectedPaperSize.label}</Text>
                 <ChevronDown color="#666" size={20} />
@@ -421,7 +420,7 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.previewSection}>
-          <Text style={styles.previewTitle}>{theme === 'american' ? 'Photo Cropping' : 'फोटो क्रॉपिंग'}</Text>
+          <Text style={styles.previewTitle}>{getTranslation(theme, 'photoCropping')}</Text>
           <View style={styles.previewContainer}>
             <View style={styles.previewBox}>
               {selectedImage && imageLoaded ? (
@@ -592,7 +591,7 @@ function CroppingInterface({
   cropArea: CropArea;
   setCropArea: React.Dispatch<React.SetStateAction<CropArea>>;
   setParentPanning: (panning: boolean) => void;
-  theme: 'american' | 'indian';
+  theme: AppTheme;
 }) {
   const startRef = useRef<{ tx: number; ty: number } | null>(null);
 
@@ -697,7 +696,7 @@ function CroppingInterface({
   return (
     <View style={croppingStyles.container}>
       {/* Themed Background */}
-      {theme === 'american' ? <AmericanThemedBackground /> : <IndianThemedBackground />}
+      <ThemedBackground theme={theme} />
 
       <View style={croppingStyles.imageContainer} pointerEvents="box-none" {...imagePanResponder.panHandlers}>
         <Image
