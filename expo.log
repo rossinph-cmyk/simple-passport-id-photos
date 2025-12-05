@@ -1,13 +1,6 @@
 + exec gosu vibecode node node_modules/.bin/expo start --localhost
 Starting project at /home/user/workspace
 Starting Metro Bundler
-Error while reading cache, falling back to a full crawl:
- Error: Unable to deserialize cloned data due to invalid or unsupported version.
-    at deserialize (node:v8:398:7)
-    at DiskCacheManager.read (/home/user/workspace/node_modules/metro-file-map/src/cache/DiskCacheManager.js:62:33)
-    at FileMap.read (/home/user/workspace/node_modules/metro-file-map/src/index.js:285:14)
-    at /home/user/workspace/node_modules/metro-file-map/src/index.js:183:25
-    at DependencyGraph.ready (/home/user/workspace/node_modules/metro/src/node-haste/DependencyGraph.js:86:5)
 The following packages should be updated for best compatibility with the installed expo version:
   @expo/vector-icons@15.0.3 - expected version: ^14.1.0
   @react-native-async-storage/async-storage@2.2.0 - expected version: 2.1.2
@@ -47,6 +40,4 @@ The following packages should be updated for best compatibility with the install
 Your project may not work correctly until you install the expected versions of the packages.
 Waiting on http://localhost:8081
 Logs for your project will appear below.
-[Metro Cache] HttpStore get failed: Request timed out
-iOS Bundled 45451ms node_modules/expo-router/entry.js (3184 modules)
-iOS Bundled 45512ms node_modules/expo-router/entry.js (1 module)
+iOS Bundled 2141ms node_modules/expo-router/entry.js (3155 modules)

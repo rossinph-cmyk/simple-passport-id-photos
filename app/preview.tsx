@@ -740,8 +740,17 @@ export default function PreviewScreen() {
   const convertImageToBase64 = async (imageUri: string): Promise<string> => {
     try {
       const imageFile = new File(imageUri);
-      const base64 = imageFile.base64();
-      return base64;
+      // Use arrayBuffer and convert to base64
+      const arrayBuffer = await imageFile.arrayBuffer();
+      const uint8Array = new Uint8Array(arrayBuffer);
+
+      // Convert to base64 using btoa
+      let binary = '';
+      const len = uint8Array.byteLength;
+      for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+      }
+      return btoa(binary);
     } catch (error) {
 
       throw error;

@@ -73,8 +73,8 @@ export default function CameraScreen() {
               const targetFile = new File(Paths.document, fileName);
               const sourceFile = new File(imageUri);
 
-              // Copy file to permanent location
-              await sourceFile.copy(targetFile);
+              // Copy file to permanent location (synchronous)
+              sourceFile.copy(targetFile);
 
               // Verify the copy was successful
               if (targetFile.exists) {

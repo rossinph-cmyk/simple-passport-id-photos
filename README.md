@@ -11,6 +11,7 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 - All file system operations now use:
   - `new File(uri)` for file references
   - `Paths.cache` and `Paths.document` for directory paths
-  - `File.downloadFileAsync()` for downloads
-  - `file.base64()` for base64 encoding
+  - `File.downloadFileAsync()` for downloads (async)
+  - `file.arrayBuffer()` for reading binary data and converting to base64
   - `file.exists` property for existence checks
+  - `file.copy()` for copying files (synchronous)
