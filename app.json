@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "EZ Passport ID Photo",
-    "slug": "ez-passport-id-photo",
+    "name": "Simple Passport ID & Photos",
+    "slug": "simple-passport-id-photos",
     "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "ezpassport",
+    "scheme": "simplepassport",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
     "splash": {
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ezpassportid.app",
+      "bundleIdentifier": "com.simplepassportid.app",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos",
         "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access your camera",
@@ -27,7 +27,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ezpassportid.app",
+      "package": "com.simplepassportid.app",
       "versionCode": 7,
       "permissions": [
         "CAMERA",
@@ -43,27 +43,27 @@
       [
         "expo-router",
         {
-          "origin": "https://ezpassportid.app/"
+          "origin": "https://simplepassportid.app/"
         }
       ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow EZ Passport ID Photo to access your photos"
+          "photosPermission": "Allow Simple Passport ID & Photos to access your photos"
         }
       ],
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow EZ Passport ID Photo to access your camera",
+          "cameraPermission": "Allow Simple Passport ID & Photos to access your camera",
           "recordAudioAndroid": false
         }
       ],
       [
         "expo-media-library",
         {
-          "photosPermission": "Allow EZ Passport ID Photo to access your photos.",
-          "savePhotosPermission": "Allow EZ Passport ID Photo to save photos.",
+          "photosPermission": "Allow Simple Passport ID & Photos to access your photos.",
+          "savePhotosPermission": "Allow Simple Passport ID & Photos to save photos.",
           "isAccessMediaLocationEnabled": false,
           "androidPermissions": [
             "READ_MEDIA_IMAGES",
@@ -79,13 +79,13 @@
     },
     "extra": {
       "router": {
-        "origin": "https://ezpassportid.app/"
+        "origin": "https://simplepassportid.app/"
       },
       "eas": {
         "projectId": "d0744897-d760-46cf-88fd-7094a8d05a03"
       }
     },
-    "owner": "ezpassport",
+    "owner": "simplepassport",
     "privacyPolicy": "https://docs.google.com/document/d/e/2PACX-1vSjsY9QbbhEQwk5j7Kp9Q7Q-6lNt_mPqKXQgDZCHj79bI_KO3L1Doq7CgVuVdM6yvG3vFqImYKiUrAC/pub"
   }
 }

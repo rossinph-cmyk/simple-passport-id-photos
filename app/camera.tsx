@@ -97,7 +97,7 @@ export default function CameraScreen() {
           <TouchableOpacity style={styles.headerButton} onPress={goBack}>
             <X color="white" size={24} />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Take ID Photo</Text>
+          <Text style={styles.headerTitle}>Take Photo</Text>
           <TouchableOpacity style={styles.headerButton} onPress={toggleCameraFacing}>
             <RotateCcw color="white" size={24} />
           </TouchableOpacity>

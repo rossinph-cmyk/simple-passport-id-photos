@@ -300,8 +300,8 @@ export default function HomeScreen() {
               <View style={styles.flag}><View style={styles.flagBlue} /><View style={styles.flagRed} /></View>
             </View>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>Photo For ID Maker</Text>
-              <Text style={styles.subtitle}>Professional Filipino ID Photos</Text>
+              <Text style={styles.title}>Simple Passport ID & Photos</Text>
+              <Text style={styles.subtitle}>Professional ID Photos Made Easy</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.heartButton}>

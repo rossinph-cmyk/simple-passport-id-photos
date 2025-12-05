@@ -301,7 +301,7 @@ export default function PreviewScreen() {
             
             // Try to create album, but don't fail if it already exists
             try {
-              await MediaLibrary.createAlbumAsync('Photo ID Maker 2', asset, false);
+              await MediaLibrary.createAlbumAsync('Simple Passport ID & Photos', asset, false);
 
             } catch (albumError) {
 
