@@ -11,7 +11,7 @@ Create professional passport ID photos in seconds with AI-powered framing and au
   - 🇵🇭 Filipino (Tagalog)
   - 🇨🇳 Chinese (Simplified Chinese)
   - 🇪🇸 Spanish (Español)
-  - 🇸🇦 Arabic (العربية)
+  - 🇸🇦 Arabic (العربية - UAE Flag)
 - **Full-screen translucent themed backgrounds**
   - Each theme displays its authentic national flag pattern at 35% opacity
   - American: Red/white stripes with blue canton and stars
@@ -19,7 +19,7 @@ Create professional passport ID photos in seconds with AI-powered framing and au
   - Filipino: Blue/red horizontal bands with white triangle
   - Chinese: Red background with yellow stars
   - Spanish: Red-yellow-red horizontal stripes
-  - Arabic: Solid green background (Saudi Arabia flag)
+  - Arabic: UAE flag with vertical red stripe and horizontal green-white-black stripes
   - Semi-transparent white panels (92% opacity) overlay the themed background for content sections
 - **Complete multi-language localization**
   - All UI text translates automatically when theme is switched
@@ -36,7 +36,7 @@ Create professional passport ID photos in seconds with AI-powered framing and au
   - Filipino: Blue (#0038A8) and Red (#CE1126)
   - Chinese: Red (#DE2910) and Yellow (#FFDE00)
   - Spanish: Red (#C60B1E) and Yellow (#FFC400)
-  - Arabic: Green (#007A3D) and Black (#000000)
+  - Arabic: Red (#EE161F), Green (#00732F), and Black (#000000)
   - All buttons use theme-specific gradient colors
 - **Authentic mini flag icons in header**
   - Each theme displays its proper national flag in the top-left corner

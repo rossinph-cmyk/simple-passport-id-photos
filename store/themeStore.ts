@@ -49,10 +49,10 @@ export const getThemeColors = (theme: AppTheme): ThemeColors => {
       };
     case 'arabic':
       return {
-        primary: '#007A3D',    // Green (Saudi Arabia)
-        secondary: '#FFFFFF',  // White
-        tertiary: '#000000',   // Black
-        buttonGradient: ['#007A3D', '#000000'],
+        primary: '#EE161F',    // Red (UAE)
+        secondary: '#00732F',  // Green (UAE)
+        tertiary: '#000000',   // Black (UAE)
+        buttonGradient: ['#EE161F', '#00732F'],
       };
     default:
       return {

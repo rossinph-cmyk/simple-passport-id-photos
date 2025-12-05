@@ -141,9 +141,14 @@ export function SpanishThemedBackground() {
 export function ArabicThemedBackground() {
   return (
     <View style={styles.container}>
-      {/* Saudi Arabian flag: green background */}
-      <View style={styles.arabicFlag}>
-        <View style={styles.arabicGreen} />
+      {/* UAE flag: vertical red stripe on left, horizontal green-white-black stripes */}
+      <View style={styles.uaeFlag}>
+        <View style={styles.uaeTricolor}>
+          <View style={styles.uaeGreen} />
+          <View style={styles.uaeWhite} />
+          <View style={styles.uaeBlack} />
+        </View>
+        <View style={styles.uaeRed} />
       </View>
     </View>
   );
@@ -301,7 +306,36 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#C60B1E',
   },
-  // Arabic theme styles (Saudi Arabia)
+  // Arabic theme styles (UAE)
+  uaeFlag: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  uaeRed: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: '25%',
+    backgroundColor: '#EE161F',
+  },
+  uaeTricolor: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  uaeGreen: {
+    flex: 1,
+    backgroundColor: '#00732F',
+  },
+  uaeWhite: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  uaeBlack: {
+    flex: 1,
+    backgroundColor: '#000000',
+  },
+  // Legacy Arabic styles (kept for backwards compatibility)
   arabicFlag: {
     flex: 1,
   },

@@ -348,7 +348,11 @@ export default function HomeScreen() {
               )}
               {theme === 'chinese' && (
                 <View style={[styles.flag, { backgroundColor: '#DE2910' }]}>
-                  <View style={[styles.chineseMiniFlagStar, { top: 3, left: 3, width: 6, height: 6 }]} />
+                  <View style={[styles.chineseMiniFlagStar, { top: 4, left: 4, width: 5, height: 5 }]} />
+                  <View style={[styles.chineseMiniFlagStar, { top: 2, left: 13, width: 2, height: 2 }]} />
+                  <View style={[styles.chineseMiniFlagStar, { top: 6, left: 15, width: 2, height: 2 }]} />
+                  <View style={[styles.chineseMiniFlagStar, { top: 10, left: 14, width: 2, height: 2 }]} />
+                  <View style={[styles.chineseMiniFlagStar, { top: 14, left: 11, width: 2, height: 2 }]} />
                 </View>
               )}
               {theme === 'spanish' && (
@@ -359,7 +363,14 @@ export default function HomeScreen() {
                 </View>
               )}
               {theme === 'arabic' && (
-                <View style={[styles.flag, { backgroundColor: '#007A3D' }]} />
+                <View style={styles.flag}>
+                  <View style={styles.uaeMiniFlagRed} />
+                  <View style={styles.uaeMiniFlagTricolor}>
+                    <View style={styles.uaeMiniFlagGreen} />
+                    <View style={styles.uaeMiniFlagWhite} />
+                    <View style={styles.uaeMiniFlagBlack} />
+                  </View>
+                </View>
               )}
             </View>
             <View style={styles.titleContainer}>
@@ -830,6 +841,11 @@ const styles = StyleSheet.create({
   chineseMiniFlagStar: { position: 'absolute', width: 4, height: 4, backgroundColor: '#FFDE00', borderRadius: 2 },
   spanishMiniFlagRed: { flex: 1, backgroundColor: '#C60B1E' },
   spanishMiniFlagYellow: { flex: 2, backgroundColor: '#FFC400' },
+  uaeMiniFlagRed: { position: 'absolute', left: 0, top: 0, bottom: 0, width: '25%', backgroundColor: '#EE161F' },
+  uaeMiniFlagTricolor: { flex: 1, flexDirection: 'column' },
+  uaeMiniFlagGreen: { flex: 1, backgroundColor: '#00732F' },
+  uaeMiniFlagWhite: { flex: 1, backgroundColor: '#FFFFFF' },
+  uaeMiniFlagBlack: { flex: 1, backgroundColor: '#000000' },
   titleContainer: { flex: 1 },
   title: { fontSize: 24, fontWeight: 'bold', color: '#0038A8', marginBottom: 2 },
   subtitle: { fontSize: 14, color: '#666' },
