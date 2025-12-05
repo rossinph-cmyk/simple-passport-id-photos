@@ -740,9 +740,8 @@ export default function PreviewScreen() {
   const convertImageToBase64 = async (imageUri: string): Promise<string> => {
     try {
       const imageFile = new File(imageUri);
-      // Use arrayBuffer and convert to base64
-      const arrayBuffer = await imageFile.arrayBuffer();
-      const uint8Array = new Uint8Array(arrayBuffer);
+      // Use bytes() method from expo-file-system which returns Uint8Array
+      const uint8Array = await imageFile.bytes();
 
       // Convert to base64 using btoa
       let binary = '';
