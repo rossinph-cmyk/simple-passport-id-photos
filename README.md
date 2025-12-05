@@ -13,11 +13,13 @@ Create professional passport ID photos in seconds with AI-powered framing and au
   - Indian theme uses official Indian flag colors: Saffron (#FF9933) and Green (#138808)
   - All buttons use theme-specific gradient colors
   - Title, icons, and UI elements change to match selected theme
-- **Authentic American flag icon in header**
-  - Top-left corner displays a proper mini American flag with:
+- **Authentic flag icons in header**
+  - American theme displays a proper mini American flag with:
     - Red and white horizontal stripes
     - Blue canton with white stars
-  - Indian theme displays Indian flag (saffron, white, green horizontal stripes)
+  - Indian theme displays an authentic Indian flag with:
+    - Saffron, white, and green horizontal stripes
+    - Blue Ashoka Chakra (wheel with 8 spokes) in the center of the white stripe
   - Flag icon changes dynamically based on selected theme
 - Added prominent instruction banner with visual guidance
 - Theme selection persists using AsyncStorage

@@ -340,7 +340,23 @@ export default function HomeScreen() {
               ) : (
                 <View style={styles.flag}>
                   <View style={styles.indianFlagSaffron} />
-                  <View style={styles.indianFlagWhite} />
+                  <View style={styles.indianFlagWhite}>
+                    {/* Ashoka Chakra in center */}
+                    <View style={styles.miniChakra}>
+                      {[...Array(8)].map((_, i) => (
+                        <View
+                          key={i}
+                          style={[
+                            styles.miniSpoke,
+                            {
+                              transform: [{ rotate: `${i * 45}deg` }]
+                            }
+                          ]}
+                        />
+                      ))}
+                      <View style={styles.miniChakraCenter} />
+                    </View>
+                  </View>
                   <View style={styles.indianFlagGreen} />
                 </View>
               )}
@@ -743,8 +759,11 @@ const styles = StyleSheet.create({
   americanCanton: { position: 'absolute', top: 0, left: 0, width: '45%', height: '60%', backgroundColor: '#0000FF' },
   miniStar: { position: 'absolute', width: 2, height: 2, backgroundColor: '#FFFFFF', borderRadius: 1 },
   indianFlagSaffron: { flex: 1, backgroundColor: '#FF9933' },
-  indianFlagWhite: { flex: 1, backgroundColor: '#FFFFFF' },
+  indianFlagWhite: { flex: 1, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center' },
   indianFlagGreen: { flex: 1, backgroundColor: '#138808' },
+  miniChakra: { width: 8, height: 8, borderRadius: 4, borderWidth: 0.5, borderColor: '#000080', justifyContent: 'center', alignItems: 'center', position: 'relative' },
+  miniSpoke: { position: 'absolute', width: 0.5, height: 3.5, backgroundColor: '#000080', top: '50%', left: '50%', marginLeft: -0.25, marginTop: -1.75 },
+  miniChakraCenter: { width: 1, height: 1, borderRadius: 0.5, backgroundColor: '#000080' },
   titleContainer: { flex: 1 },
   title: { fontSize: 24, fontWeight: 'bold', color: '#0038A8', marginBottom: 2 },
   subtitle: { fontSize: 14, color: '#666' },
