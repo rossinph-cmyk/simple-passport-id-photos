@@ -3,15 +3,41 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type AppTheme = 'american' | 'indian';
 
+export interface ThemeColors {
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  buttonGradient: string[];
+}
+
+export const getThemeColors = (theme: AppTheme): ThemeColors => {
+  if (theme === 'american') {
+    return {
+      primary: '#B22234',    // Red
+      secondary: '#FFFFFF',  // White
+      tertiary: '#3C3B6E',   // Blue
+      buttonGradient: ['#B22234', '#3C3B6E'],
+    };
+  } else {
+    return {
+      primary: '#FF9933',    // Saffron
+      secondary: '#FFFFFF',  // White
+      tertiary: '#138808',   // Green
+      buttonGradient: ['#FF9933', '#138808'],
+    };
+  }
+};
+
 interface ThemeState {
   theme: AppTheme;
   setTheme: (theme: AppTheme) => Promise<void>;
   loadTheme: () => Promise<void>;
+  getColors: () => ThemeColors;
 }
 
 const THEME_STORAGE_KEY = '@app_theme';
 
-export const useThemeStore = create<ThemeState>((set) => ({
+export const useThemeStore = create<ThemeState>((set, get) => ({
   theme: 'american',
 
   setTheme: async (theme: AppTheme) => {
@@ -32,5 +58,9 @@ export const useThemeStore = create<ThemeState>((set) => ({
     } catch (error) {
       console.error('Failed to load theme:', error);
     }
+  },
+
+  getColors: () => {
+    return getThemeColors(get().theme);
   },
 }));

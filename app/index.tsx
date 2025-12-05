@@ -58,6 +58,7 @@ export default function HomeScreen() {
   const theme = useThemeStore(s => s.theme);
   const setTheme = useThemeStore(s => s.setTheme);
   const loadTheme = useThemeStore(s => s.loadTheme);
+  const themeColors = useThemeStore(s => s.getColors());
 
   const [selectedIdSize, setSelectedIdSize] = useState<IdSize>(ID_SIZES[0]);
   const [selectedPaperSize, setSelectedPaperSize] = useState(PAPER_SIZES[0]);
@@ -311,12 +312,12 @@ export default function HomeScreen() {
               <View style={styles.flag}><View style={styles.flagBlue} /><View style={styles.flagRed} /></View>
             </View>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>Simple Passport ID & Photos</Text>
+              <Text style={[styles.title, { color: themeColors.primary }]}>Simple Passport ID & Photos</Text>
               <Text style={styles.subtitle}>Professional ID Photos Made Easy</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.heartButton}>
-            <Heart color="#CE1126" size={24} fill="#CE1126" />
+            <Heart color={themeColors.primary} size={24} fill={themeColors.primary} />
           </TouchableOpacity>
         </View>
 
@@ -327,12 +328,12 @@ export default function HomeScreen() {
 
         {/* Theme Toggle Button */}
         <TouchableOpacity style={styles.themeButton} onPress={() => setShowThemeModal(true)}>
-          <Globe color="#0038A8" size={20} />
-          <Text style={styles.themeButtonText}>Background Theme: {theme === 'american' ? '🇺🇸 American' : '🇮🇳 Indian'}</Text>
+          <Globe color={themeColors.primary} size={20} />
+          <Text style={[styles.themeButtonText, { color: themeColors.primary }]}>Background Theme: {theme === 'american' ? '🇺🇸 American' : '🇮🇳 Indian'}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.featuresButton} onPress={() => setShowFeaturesModal(true)}>
-          <LinearGradient colors={['#0038A8', '#CE1126']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.featuresGradient}>
+          <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.featuresGradient}>
             <Info color="white" size={20} />
             <Text style={styles.featuresButtonText}>Features</Text>
           </LinearGradient>
@@ -393,28 +394,34 @@ export default function HomeScreen() {
         <View style={styles.actionSection}>
           {!selectedImage ? (
             <>
-              <TouchableOpacity style={styles.actionButton} onPress={handleTakePicture}>
-                <Camera color="white" size={24} />
-                <Text style={styles.actionButtonText}>Take Picture</Text>
+              <TouchableOpacity style={styles.actionButtonWrapper} onPress={handleTakePicture}>
+                <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
+                  <Camera color="white" size={24} />
+                  <Text style={styles.actionButtonText}>Take Picture</Text>
+                </LinearGradient>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.actionButtonSecondary} onPress={handleSelectFromGallery}>
-                <ImageIcon color="#0038A8" size={24} />
-                <Text style={styles.actionButtonSecondaryText}>Gallery</Text>
+              <TouchableOpacity style={[styles.actionButtonSecondary, { borderColor: themeColors.primary }]} onPress={handleSelectFromGallery}>
+                <ImageIcon color={themeColors.primary} size={24} />
+                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>Gallery</Text>
               </TouchableOpacity>
             </>
           ) : (
             <>
-              <TouchableOpacity style={styles.actionButton} onPress={() => handlePreview('single')}>
-                <Eye color="white" size={24} />
-                <Text style={styles.actionButtonText}>Preview Single Photo</Text>
+              <TouchableOpacity style={styles.actionButtonWrapper} onPress={() => handlePreview('single')}>
+                <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
+                  <Eye color="white" size={24} />
+                  <Text style={styles.actionButtonText}>Preview Single Photo</Text>
+                </LinearGradient>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.actionButton} onPress={() => handlePreview('sheet')}>
-                <Eye color="white" size={24} />
-                <Text style={styles.actionButtonText}>Preview 3 Photos</Text>
+              <TouchableOpacity style={styles.actionButtonWrapper} onPress={() => handlePreview('sheet')}>
+                <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
+                  <Eye color="white" size={24} />
+                  <Text style={styles.actionButtonText}>Preview 3 Photos</Text>
+                </LinearGradient>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.actionButtonSecondary} onPress={handleClearImage}>
-                <ImageIcon color="#0038A8" size={24} />
-                <Text style={styles.actionButtonSecondaryText}>Select New Photo</Text>
+              <TouchableOpacity style={[styles.actionButtonSecondary, { borderColor: themeColors.primary }]} onPress={handleClearImage}>
+                <ImageIcon color={themeColors.primary} size={24} />
+                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>Select New Photo</Text>
               </TouchableOpacity>
             </>
           )}
@@ -445,7 +452,7 @@ export default function HomeScreen() {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Select Background Theme</Text>
             <TouchableOpacity
-              style={[styles.modalOption, theme === 'american' && styles.modalOptionSelected]}
+              style={[styles.modalOption, theme === 'american' && { backgroundColor: '#B22234' }]}
               onPress={async () => {
                 await setTheme('american');
                 setShowThemeModal(false);
@@ -456,7 +463,7 @@ export default function HomeScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.modalOption, theme === 'indian' && styles.modalOptionSelected]}
+              style={[styles.modalOption, theme === 'indian' && { backgroundColor: '#FF9933' }]}
               onPress={async () => {
                 await setTheme('indian');
                 setShowThemeModal(false);
@@ -731,10 +738,11 @@ const styles = StyleSheet.create({
   cropInstructions: { marginTop: 10, paddingHorizontal: 10 },
   instructionText: { fontSize: 12, color: '#666', textAlign: 'center', lineHeight: 16 },
   actionSection: { paddingHorizontal: 20, paddingBottom: 30, gap: 15 },
-  actionButton: { backgroundColor: '#0038A8', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 16, borderRadius: 12, gap: 10 },
+  actionButtonWrapper: { borderRadius: 12, overflow: 'hidden' },
+  actionButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 16, gap: 10 },
   actionButtonText: { color: 'white', fontSize: 16, fontWeight: '600' },
-  actionButtonSecondary: { backgroundColor: 'white', borderWidth: 2, borderColor: '#0038A8', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 16, borderRadius: 12, gap: 10 },
-  actionButtonSecondaryText: { color: '#0038A8', fontSize: 16, fontWeight: '600' },
+  actionButtonSecondary: { backgroundColor: 'white', borderWidth: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 16, borderRadius: 12, gap: 10 },
+  actionButtonSecondaryText: { fontSize: 16, fontWeight: '600' },
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'center', alignItems: 'center' },
   modalContent: { backgroundColor: 'white', borderRadius: 16, padding: 24, margin: 20, maxHeight: '80%', minWidth: 300, gap: 12 },
   modalTitle: { fontSize: 20, fontWeight: 'bold', color: '#333', marginBottom: 20, textAlign: 'center' },

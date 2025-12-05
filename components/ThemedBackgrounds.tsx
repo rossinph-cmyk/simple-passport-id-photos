@@ -5,17 +5,34 @@ import { LinearGradient } from 'expo-linear-gradient';
 export function AmericanThemedBackground() {
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={['#B22234', '#FFFFFF', '#3C3B6E']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styles.gradient}
-      />
-      {/* Subtle star pattern */}
-      <View style={styles.starPattern}>
-        {[...Array(6)].map((_, i) => (
-          <View key={i} style={[styles.star, { top: `${15 + i * 15}%`, left: `${10 + (i % 2) * 30}%` }]} />
+      {/* Horizontal stripes pattern */}
+      <View style={styles.stripesContainer}>
+        {[...Array(13)].map((_, i) => (
+          <View
+            key={i}
+            style={[
+              styles.stripe,
+              { backgroundColor: i % 2 === 0 ? '#B22234' : '#FFFFFF' }
+            ]}
+          />
         ))}
+      </View>
+      {/* Blue canton with stars */}
+      <View style={styles.canton}>
+        <View style={styles.starField}>
+          {[...Array(15)].map((_, i) => (
+            <View
+              key={i}
+              style={[
+                styles.star,
+                {
+                  top: `${(Math.floor(i / 5) * 25 + 12)}%`,
+                  left: `${((i % 5) * 20 + 10)}%`
+                }
+              ]}
+            />
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -24,16 +41,32 @@ export function AmericanThemedBackground() {
 export function IndianThemedBackground() {
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={['#FF9933', '#FFFFFF', '#138808']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styles.gradient}
-      />
-      {/* Subtle chakra-inspired pattern */}
-      <View style={styles.chakraPattern}>
-        <View style={styles.chakraOuter} />
-        <View style={styles.chakraInner} />
+      {/* Tri-color horizontal stripes */}
+      <View style={styles.indianFlag}>
+        <View style={styles.saffron} />
+        <View style={styles.white}>
+          {/* Ashoka Chakra in center */}
+          <View style={styles.chakraContainer}>
+            <View style={styles.chakra}>
+              {/* 24 spokes */}
+              {[...Array(24)].map((_, i) => (
+                <View
+                  key={i}
+                  style={[
+                    styles.spoke,
+                    {
+                      transform: [
+                        { rotate: `${i * 15}deg` }
+                      ]
+                    }
+                  ]}
+                />
+              ))}
+              <View style={styles.chakraCenter} />
+            </View>
+          </View>
+        </View>
+        <View style={styles.green} />
       </View>
     </View>
   );
@@ -42,47 +75,83 @@ export function IndianThemedBackground() {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    opacity: 0.15,
+    opacity: 0.25,
   },
-  gradient: {
+  // American theme styles
+  stripesContainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  stripe: {
     flex: 1,
   },
-  starPattern: {
-    ...StyleSheet.absoluteFillObject,
+  canton: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '40%',
+    height: '54%',
+    backgroundColor: '#3C3B6E',
+  },
+  starField: {
+    flex: 1,
+    position: 'relative',
   },
   star: {
     position: 'absolute',
     width: 8,
     height: 8,
     backgroundColor: '#FFFFFF',
-    borderRadius: 4,
-    opacity: 0.3,
+    transform: [{ rotate: '0deg' }],
   },
-  chakraPattern: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginLeft: -60,
-    marginTop: -60,
-    width: 120,
-    height: 120,
-    opacity: 0.2,
+  // Indian theme styles
+  indianFlag: {
+    flex: 1,
+    flexDirection: 'column',
   },
-  chakraOuter: {
-    position: 'absolute',
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+  saffron: {
+    flex: 1,
+    backgroundColor: '#FF9933',
+  },
+  white: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  green: {
+    flex: 1,
+    backgroundColor: '#138808',
+  },
+  chakraContainer: {
+    width: 60,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  chakra: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     borderWidth: 2,
     borderColor: '#000080',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  chakraInner: {
+  spoke: {
     position: 'absolute',
-    top: 40,
-    left: 40,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 2,
+    height: 22,
+    backgroundColor: '#000080',
+    top: '50%',
+    left: '50%',
+    marginLeft: -1,
+    marginTop: -11,
+  },
+  chakraCenter: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
     backgroundColor: '#000080',
   },
 });
