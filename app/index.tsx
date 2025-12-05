@@ -314,56 +314,52 @@ export default function HomeScreen() {
         <View style={styles.header}>
           <View style={styles.headerContent}>
             <View style={styles.flagContainer}>
-              {theme === 'american' ? (
+              {theme === 'american' && (
                 <View style={styles.flag}>
-                  {/* Red and white stripes */}
                   {[...Array(7)].map((_, i) => (
-                    <View
-                      key={i}
-                      style={[
-                        styles.americanStripe,
-                        { backgroundColor: i % 2 === 0 ? '#DC143C' : '#FFFFFF' }
-                      ]}
-                    />
+                    <View key={i} style={[styles.americanStripe, { backgroundColor: i % 2 === 0 ? '#DC143C' : '#FFFFFF' }]} />
                   ))}
-                  {/* Blue canton with white stars */}
                   <View style={styles.americanCanton}>
                     {[...Array(6)].map((_, i) => (
-                      <View
-                        key={i}
-                        style={[
-                          styles.miniStar,
-                          {
-                            top: Math.floor(i / 3) * 6 + 2,
-                            left: (i % 3) * 5 + 2
-                          }
-                        ]}
-                      />
+                      <View key={i} style={[styles.miniStar, { top: Math.floor(i / 3) * 6 + 2, left: (i % 3) * 5 + 2 }]} />
                     ))}
                   </View>
                 </View>
-              ) : (
+              )}
+              {theme === 'indian' && (
                 <View style={styles.flag}>
                   <View style={styles.indianFlagSaffron} />
                   <View style={styles.indianFlagWhite}>
-                    {/* Ashoka Chakra in center */}
                     <View style={styles.miniChakra}>
                       {[...Array(8)].map((_, i) => (
-                        <View
-                          key={i}
-                          style={[
-                            styles.miniSpoke,
-                            {
-                              transform: [{ rotate: `${i * 45}deg` }]
-                            }
-                          ]}
-                        />
+                        <View key={i} style={[styles.miniSpoke, { transform: [{ rotate: `${i * 45}deg` }] }]} />
                       ))}
                       <View style={styles.miniChakraCenter} />
                     </View>
                   </View>
                   <View style={styles.indianFlagGreen} />
                 </View>
+              )}
+              {theme === 'filipino' && (
+                <View style={styles.flag}>
+                  <View style={styles.filipinoMiniFlagBlue} />
+                  <View style={styles.filipinoMiniFlagRed} />
+                </View>
+              )}
+              {theme === 'chinese' && (
+                <View style={[styles.flag, { backgroundColor: '#DE2910' }]}>
+                  <View style={[styles.chineseMiniFlagStar, { top: 3, left: 3, width: 6, height: 6 }]} />
+                </View>
+              )}
+              {theme === 'spanish' && (
+                <View style={styles.flag}>
+                  <View style={styles.spanishMiniFlagRed} />
+                  <View style={styles.spanishMiniFlagYellow} />
+                  <View style={styles.spanishMiniFlagRed} />
+                </View>
+              )}
+              {theme === 'arabic' && (
+                <View style={[styles.flag, { backgroundColor: '#007A3D' }]} />
               )}
             </View>
             <View style={styles.titleContainer}>
@@ -440,7 +436,7 @@ export default function HomeScreen() {
                 <View style={styles.placeholderContainer}>
                   <View style={styles.gridOverlay}><View style={styles.gridLine} /><View style={[styles.gridLine, styles.gridLineHorizontal]} /></View>
                   <View style={styles.watermark}><Text style={styles.watermarkText}>PHOTO ID</Text><Text style={styles.watermarkText}>MAKER 2</Text></View>
-                  <Text style={styles.previewPlaceholder}>{theme === 'american' ? 'No photo selected' : 'कोई फोटो नहीं चुनी गई'}</Text>
+                  <Text style={styles.previewPlaceholder}>{getTranslation(theme, 'noPhotoSelected')}</Text>
                 </View>
               )}
             </View>
@@ -448,9 +444,7 @@ export default function HomeScreen() {
           {selectedImage && imageLoaded && (
             <View style={styles.cropInstructions}>
               <Text style={styles.instructionText}>
-                {theme === 'american'
-                  ? 'Drag the photo with one finger to reposition. Release to set.'
-                  : 'फोटो को स्थानांतरित करने के लिए एक उंगली से खींचें। सेट करने के लिए छोड़ें।'}
+                {getTranslation(theme, 'dragInstruction')}
               </Text>
             </View>
           )}
@@ -462,12 +456,12 @@ export default function HomeScreen() {
               <TouchableOpacity style={styles.actionButtonWrapper} onPress={handleTakePicture}>
                 <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
                   <Camera color="white" size={24} />
-                  <Text style={styles.actionButtonText}>{theme === 'american' ? 'Take Picture' : 'तस्वीर लें'}</Text>
+                  <Text style={styles.actionButtonText}>{getTranslation(theme, 'takePicture')}</Text>
                 </LinearGradient>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.actionButtonSecondary, { borderColor: themeColors.primary }]} onPress={handleSelectFromGallery}>
                 <ImageIcon color={themeColors.primary} size={24} />
-                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>{theme === 'american' ? 'Gallery' : 'गैलरी'}</Text>
+                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>{getTranslation(theme, 'gallery')}</Text>
               </TouchableOpacity>
             </>
           ) : (
@@ -475,18 +469,18 @@ export default function HomeScreen() {
               <TouchableOpacity style={styles.actionButtonWrapper} onPress={() => handlePreview('single')}>
                 <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
                   <Eye color="white" size={24} />
-                  <Text style={styles.actionButtonText}>{theme === 'american' ? 'Preview Single Photo' : 'एकल फोटो पूर्वावलोकन'}</Text>
+                  <Text style={styles.actionButtonText}>{getTranslation(theme, 'previewSinglePhoto')}</Text>
                 </LinearGradient>
               </TouchableOpacity>
               <TouchableOpacity style={styles.actionButtonWrapper} onPress={() => handlePreview('sheet')}>
                 <LinearGradient colors={[themeColors.buttonGradient[0], themeColors.buttonGradient[1]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.actionButton}>
                   <Eye color="white" size={24} />
-                  <Text style={styles.actionButtonText}>{theme === 'american' ? 'Preview 3 Photos' : '3 फोटो पूर्वावलोकन'}</Text>
+                  <Text style={styles.actionButtonText}>{getTranslation(theme, 'preview3Photos')}</Text>
                 </LinearGradient>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.actionButtonSecondary, { borderColor: themeColors.primary }]} onPress={handleClearImage}>
                 <ImageIcon color={themeColors.primary} size={24} />
-                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>{theme === 'american' ? 'Select New Photo' : 'नई फोटो चुनें'}</Text>
+                <Text style={[styles.actionButtonSecondaryText, { color: themeColors.primary }]}>{getTranslation(theme, 'selectNewPhoto')}</Text>
               </TouchableOpacity>
             </>
           )}
@@ -498,44 +492,31 @@ export default function HomeScreen() {
 
       {/* ID Size Modal */}
       <Modal visible={showIdSizeModal} transparent animationType="slide">
-        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{theme === 'american' ? 'Select ID Size' : 'आईडी आकार चुनें'}</Text>{ID_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedIdSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedIdSize(size); setShowIdSizeModal(false); }}><Text style={[styles.modalOptionText, selectedIdSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowIdSizeModal(false)}><Text style={styles.modalCloseText}>{theme === 'american' ? 'Cancel' : 'रद्द करें'}</Text></TouchableOpacity></View></View>
+        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{getTranslation(theme, 'selectIdSize')}</Text>{ID_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedIdSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedIdSize(size); setShowIdSizeModal(false); }}><Text style={[styles.modalOptionText, selectedIdSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowIdSizeModal(false)}><Text style={styles.modalCloseText}>{getTranslation(theme, 'cancel')}</Text></TouchableOpacity></View></View>
       </Modal>
 
       {/* Paper Size Modal */}
       <Modal visible={showPaperSizeModal} transparent animationType="slide">
-        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{theme === 'american' ? 'Select Paper Size' : 'कागज का आकार चुनें'}</Text>{PAPER_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedPaperSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedPaperSize(size); setShowPaperSizeModal(false); }}><Text style={[styles.modalOptionText, selectedPaperSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowPaperSizeModal(false)}><Text style={styles.modalCloseText}>{theme === 'american' ? 'Cancel' : 'रद्द करें'}</Text></TouchableOpacity></View></View>
+        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{getTranslation(theme, 'selectPaperSize')}</Text>{PAPER_SIZES.map((size) => (<TouchableOpacity key={size.value} style={[styles.modalOption, selectedPaperSize.value === size.value && styles.modalOptionSelected]} onPress={() => { setSelectedPaperSize(size); setShowPaperSizeModal(false); }}><Text style={[styles.modalOptionText, selectedPaperSize.value === size.value && styles.modalOptionTextSelected]}>{size.label}</Text></TouchableOpacity>))}<TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowPaperSizeModal(false)}><Text style={styles.modalCloseText}>{getTranslation(theme, 'cancel')}</Text></TouchableOpacity></View></View>
       </Modal>
 
       {/* Features Modal */}
       <Modal visible={showFeaturesModal} transparent animationType="fade">
-        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{theme === 'american' ? 'App Features' : 'ऐप सुविधाएँ'}</Text><View style={styles.featuresList}>
-        {theme === 'american' ? (
-          <>
-            <Text style={styles.featureItem}>• Multiple ID sizes (1x1, 1x1.5, 1x2, 2x2, 2x3 inches)</Text>
-            <Text style={styles.featureItem}>• Various paper sizes (A4, Letter, Long photo paper)</Text>
-            <Text style={styles.featureItem}>• Simple, precise photo positioning</Text>
-            <Text style={styles.featureItem}>• Grid overlay for perfect alignment</Text>
-            <Text style={styles.featureItem}>• Single photo or 3-photo sheet layouts</Text>
-            <Text style={styles.featureItem}>• Save directly to shareable PDF format</Text>
-          </>
-        ) : (
-          <>
-            <Text style={styles.featureItem}>• कई आईडी आकार (1x1, 1x1.5, 1x2, 2x2, 2x3 इंच)</Text>
-            <Text style={styles.featureItem}>• विभिन्न कागज के आकार (A4, Letter, लंबा फोटो पेपर)</Text>
-            <Text style={styles.featureItem}>• सरल, सटीक फोटो स्थिति</Text>
-            <Text style={styles.featureItem}>• सही संरेखण के लिए ग्रिड ओवरले</Text>
-            <Text style={styles.featureItem}>• एकल फोटो या 3-फोटो शीट लेआउट</Text>
-            <Text style={styles.featureItem}>• साझा करने योग्य पीडीएफ प्रारूप में सीधे सहेजें</Text>
-          </>
-        )}
-        </View><TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowFeaturesModal(false)}><Text style={styles.modalCloseText}>{theme === 'american' ? 'Close' : 'बंद करें'}</Text></TouchableOpacity></View></View>
+        <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>{getTranslation(theme, 'appFeatures')}</Text><View style={styles.featuresList}>
+          <Text style={styles.featureItem}>{getTranslation(theme, 'feature1')}</Text>
+          <Text style={styles.featureItem}>{getTranslation(theme, 'feature2')}</Text>
+          <Text style={styles.featureItem}>{getTranslation(theme, 'feature3')}</Text>
+          <Text style={styles.featureItem}>{getTranslation(theme, 'feature4')}</Text>
+          <Text style={styles.featureItem}>{getTranslation(theme, 'feature5')}</Text>
+          <Text style={styles.featureItem}>{getTranslation(theme, 'feature6')}</Text>
+        </View><TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowFeaturesModal(false)}><Text style={styles.modalCloseText}>{getTranslation(theme, 'close')}</Text></TouchableOpacity></View></View>
       </Modal>
 
       {/* Theme Modal */}
       <Modal visible={showThemeModal} transparent animationType="slide">
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>{theme === 'american' ? 'Select Background Theme' : 'पृष्ठभूमि थीम चुनें'}</Text>
+            <Text style={styles.modalTitle}>{getTranslation(theme, 'selectBackgroundTheme')}</Text>
             <TouchableOpacity
               style={[styles.modalOption, theme === 'american' && { backgroundColor: '#DC143C' }]}
               onPress={async () => {
@@ -558,8 +539,52 @@ export default function HomeScreen() {
                 🇮🇳 Indian Theme
               </Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.modalOption, theme === 'filipino' && { backgroundColor: '#0038A8' }]}
+              onPress={async () => {
+                await setTheme('filipino');
+                setShowThemeModal(false);
+              }}
+            >
+              <Text style={[styles.modalOptionText, theme === 'filipino' && styles.modalOptionTextSelected]}>
+                🇵🇭 Filipino Theme
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.modalOption, theme === 'chinese' && { backgroundColor: '#DE2910' }]}
+              onPress={async () => {
+                await setTheme('chinese');
+                setShowThemeModal(false);
+              }}
+            >
+              <Text style={[styles.modalOptionText, theme === 'chinese' && styles.modalOptionTextSelected]}>
+                🇨🇳 Chinese Theme
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.modalOption, theme === 'spanish' && { backgroundColor: '#C60B1E' }]}
+              onPress={async () => {
+                await setTheme('spanish');
+                setShowThemeModal(false);
+              }}
+            >
+              <Text style={[styles.modalOptionText, theme === 'spanish' && styles.modalOptionTextSelected]}>
+                🇪🇸 Spanish Theme
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.modalOption, theme === 'arabic' && { backgroundColor: '#007A3D' }]}
+              onPress={async () => {
+                await setTheme('arabic');
+                setShowThemeModal(false);
+              }}
+            >
+              <Text style={[styles.modalOptionText, theme === 'arabic' && styles.modalOptionTextSelected]}>
+                🇸🇦 Arabic Theme
+              </Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowThemeModal(false)}>
-              <Text style={styles.modalCloseText}>{theme === 'american' ? 'Cancel' : 'रद्द करें'}</Text>
+              <Text style={styles.modalCloseText}>{getTranslation(theme, 'cancel')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -800,6 +825,11 @@ const styles = StyleSheet.create({
   miniChakra: { width: 8, height: 8, borderRadius: 4, borderWidth: 0.5, borderColor: '#000080', justifyContent: 'center', alignItems: 'center', position: 'relative' },
   miniSpoke: { position: 'absolute', width: 0.5, height: 3.5, backgroundColor: '#000080', top: '50%', left: '50%', marginLeft: -0.25, marginTop: -1.75 },
   miniChakraCenter: { width: 1, height: 1, borderRadius: 0.5, backgroundColor: '#000080' },
+  filipinoMiniFlagBlue: { flex: 1, backgroundColor: '#0038A8' },
+  filipinoMiniFlagRed: { flex: 1, backgroundColor: '#CE1126' },
+  chineseMiniFlagStar: { position: 'absolute', width: 4, height: 4, backgroundColor: '#FFDE00', borderRadius: 2 },
+  spanishMiniFlagRed: { flex: 1, backgroundColor: '#C60B1E' },
+  spanishMiniFlagYellow: { flex: 2, backgroundColor: '#FFC400' },
   titleContainer: { flex: 1 },
   title: { fontSize: 24, fontWeight: 'bold', color: '#0038A8', marginBottom: 2 },
   subtitle: { fontSize: 14, color: '#666' },

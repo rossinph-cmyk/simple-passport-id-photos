@@ -4,34 +4,49 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 
 ## Recent Updates
 
-### Background Theme Feature (Latest)
+### Multi-Language Theme System (Latest)
+- **Six complete language themes with cultural authenticity**
+  - 🇺🇸 American (English)
+  - 🇮🇳 Indian (Hindi - Devanagari script)
+  - 🇵🇭 Filipino (Tagalog)
+  - 🇨🇳 Chinese (Simplified Chinese)
+  - 🇪🇸 Spanish (Español)
+  - 🇸🇦 Arabic (العربية)
 - **Full-screen translucent themed backgrounds**
-  - American theme: Full American flag pattern (red/white stripes with blue canton and stars) at 35% opacity covering the entire app background
-  - Indian theme: Full Indian flag pattern (saffron/white/green stripes with Ashoka Chakra) at 35% opacity covering the entire app background
+  - Each theme displays its authentic national flag pattern at 35% opacity
+  - American: Red/white stripes with blue canton and stars
+  - Indian: Saffron/white/green stripes with Ashoka Chakra (24 spokes)
+  - Filipino: Blue/red horizontal bands with white triangle
+  - Chinese: Red background with yellow stars
+  - Spanish: Red-yellow-red horizontal stripes
+  - Arabic: Solid green background (Saudi Arabia flag)
   - Semi-transparent white panels (92% opacity) overlay the themed background for content sections
-  - Creates an immersive patriotic/cultural atmosphere throughout the app
-- **Multi-language support with theme-based localization**
-  - American theme: All text displays in English
-  - Indian theme: All app text automatically switches to Hindi (Devanagari script)
-  - Includes translated UI elements: titles, buttons, instructions, modals, and feature descriptions
-  - Theme button label remains "Indian" but all other content switches to Hindi language
-- **Dynamic theme colors with pure, vibrant flag colors**
-  - American theme uses pure colors: Crimson Red (#DC143C) and Pure Blue (#0000FF)
-  - Indian theme uses official Indian flag colors: Saffron (#FF9933) and Green (#138808)
+- **Complete multi-language localization**
+  - All UI text translates automatically when theme is switched
+  - Includes 28+ translated strings per language:
+    - App titles and subtitles
+    - Button labels and instructions
+    - Modal dialogs and feature descriptions
+    - Error messages and guidance text
+  - Translation system uses `utils/translations.ts` with `getTranslation()` helper
+  - Button theme labels remain in English, but all other content translates
+- **Dynamic theme colors with authentic flag colors**
+  - American: Pure Crimson Red (#DC143C) and Blue (#0000FF)
+  - Indian: Saffron (#FF9933) and Green (#138808)
+  - Filipino: Blue (#0038A8) and Red (#CE1126)
+  - Chinese: Red (#DE2910) and Yellow (#FFDE00)
+  - Spanish: Red (#C60B1E) and Yellow (#FFC400)
+  - Arabic: Green (#007A3D) and Black (#000000)
   - All buttons use theme-specific gradient colors
-  - Title, icons, and UI elements change to match selected theme
-- **Authentic flag icons in header**
-  - American theme displays a proper mini American flag with:
-    - Red and white horizontal stripes
-    - Blue canton with white stars
-  - Indian theme displays an authentic Indian flag with:
-    - Saffron, white, and green horizontal stripes
-    - Blue Ashoka Chakra (wheel with 8 spokes) in the center of the white stripe
-  - Flag icon changes dynamically based on selected theme
-- Added prominent instruction banner with visual guidance
-- Theme selection persists using AsyncStorage
-- Easy-to-use theme switcher (American 🇺🇸 / Indian 🇮🇳)
-- Fixed infinite loop issue with useMemo for theme colors
+- **Authentic mini flag icons in header**
+  - Each theme displays its proper national flag in the top-left corner
+  - Flags are rendered with authentic designs matching official specifications
+  - Flag dynamically switches when user changes theme
+- **Theme persistence and easy switching**
+  - Theme selection persists using AsyncStorage
+  - Modal selector with all 6 theme options
+  - One-tap theme switching with instant visual feedback
+  - Fixed infinite loop issue with useMemo for theme colors
 
 ### Complete Rebranding
 - Renamed app from "EZ Passport ID Photo Maker" to "Simple Passport ID & Photos"
