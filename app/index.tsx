@@ -14,13 +14,15 @@ import {
   PanResponderGestureState,
 } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
-import { Camera, Image as ImageIcon, ChevronDown, Info, Eye, Heart } from 'lucide-react-native';
+import { Camera, Image as ImageIcon, ChevronDown, Info, Eye, Heart, Globe } from 'lucide-react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
 import * as ImageManipulator from 'expo-image-manipulator';
+import { useThemeStore } from '../store/themeStore';
+import { AmericanThemedBackground, IndianThemedBackground } from '../components/ThemedBackgrounds';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -53,11 +55,16 @@ interface ImageTransform { translateX: number; translateY: number; }
 
 export default function HomeScreen() {
   const { capturedImageUri } = useLocalSearchParams<{ capturedImageUri?: string }>();
+  const theme = useThemeStore(s => s.theme);
+  const setTheme = useThemeStore(s => s.setTheme);
+  const loadTheme = useThemeStore(s => s.loadTheme);
+
   const [selectedIdSize, setSelectedIdSize] = useState<IdSize>(ID_SIZES[0]);
   const [selectedPaperSize, setSelectedPaperSize] = useState(PAPER_SIZES[0]);
   const [showIdSizeModal, setShowIdSizeModal] = useState(false);
   const [showPaperSizeModal, setShowPaperSizeModal] = useState(false);
   const [showFeaturesModal, setShowFeaturesModal] = useState(false);
+  const [showThemeModal, setShowThemeModal] = useState(false);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -69,6 +76,10 @@ export default function HomeScreen() {
   const [cropArea, setCropArea] = useState<CropArea>({ x: 0, y: 0, width: 150, height: 180 });
 
   const [isPanningImage, setIsPanningImage] = useState<boolean>(false);
+
+  useEffect(() => {
+    loadTheme();
+  }, []);
 
   const updateImageTransform = (transform: ImageTransform) => {
     setImageTransform(transform);
@@ -309,6 +320,17 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* Instruction Banner */}
+        <View style={styles.instructionBanner}>
+          <Text style={styles.bannerText}>📸 Please take a selfie or upload a picture on a plain white background</Text>
+        </View>
+
+        {/* Theme Toggle Button */}
+        <TouchableOpacity style={styles.themeButton} onPress={() => setShowThemeModal(true)}>
+          <Globe color="#0038A8" size={20} />
+          <Text style={styles.themeButtonText}>Background Theme: {theme === 'american' ? '🇺🇸 American' : '🇮🇳 Indian'}</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.featuresButton} onPress={() => setShowFeaturesModal(true)}>
           <LinearGradient colors={['#0038A8', '#CE1126']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.featuresGradient}>
             <Info color="white" size={20} />
@@ -350,6 +372,7 @@ export default function HomeScreen() {
                   cropArea={cropArea}
                   setCropArea={setCropArea}
                   setParentPanning={setIsPanningImage}
+                  theme={theme}
                 />
               ) : (
                 <View style={styles.placeholderContainer}>
@@ -416,6 +439,40 @@ export default function HomeScreen() {
         <View style={styles.modalOverlay}><View style={styles.modalContent}><Text style={styles.modalTitle}>App Features</Text><View style={styles.featuresList}><Text style={styles.featureItem}>• Multiple ID sizes (1x1, 1x1.5, 1x2, 2x2, 2x3 inches)</Text><Text style={styles.featureItem}>• Various paper sizes (A4, Letter, Long photo paper)</Text><Text style={styles.featureItem}>• Simple, precise photo positioning</Text><Text style={styles.featureItem}>• Grid overlay for perfect alignment</Text><Text style={styles.featureItem}>• Single photo or 3-photo sheet layouts</Text><Text style={styles.featureItem}>• Save directly to shareable PDF format</Text></View><TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowFeaturesModal(false)}><Text style={styles.modalCloseText}>Close</Text></TouchableOpacity></View></View>
       </Modal>
 
+      {/* Theme Modal */}
+      <Modal visible={showThemeModal} transparent animationType="slide">
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Select Background Theme</Text>
+            <TouchableOpacity
+              style={[styles.modalOption, theme === 'american' && styles.modalOptionSelected]}
+              onPress={async () => {
+                await setTheme('american');
+                setShowThemeModal(false);
+              }}
+            >
+              <Text style={[styles.modalOptionText, theme === 'american' && styles.modalOptionTextSelected]}>
+                🇺🇸 American Theme
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.modalOption, theme === 'indian' && styles.modalOptionSelected]}
+              onPress={async () => {
+                await setTheme('indian');
+                setShowThemeModal(false);
+              }}
+            >
+              <Text style={[styles.modalOptionText, theme === 'indian' && styles.modalOptionTextSelected]}>
+                🇮🇳 Indian Theme
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.modalCloseButton} onPress={() => setShowThemeModal(false)}>
+              <Text style={styles.modalCloseText}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
 
     </View>
   );
@@ -431,6 +488,7 @@ function CroppingInterface({
   cropArea,
   setCropArea,
   setParentPanning,
+  theme,
 }: {
   imageUri: string;
   displayDimensions: DisplayDimensions;
@@ -441,6 +499,7 @@ function CroppingInterface({
   cropArea: CropArea;
   setCropArea: React.Dispatch<React.SetStateAction<CropArea>>;
   setParentPanning: (panning: boolean) => void;
+  theme: 'american' | 'indian';
 }) {
   const startRef = useRef<{ tx: number; ty: number } | null>(null);
 
@@ -544,6 +603,9 @@ function CroppingInterface({
 
   return (
     <View style={croppingStyles.container}>
+      {/* Themed Background */}
+      {theme === 'american' ? <AmericanThemedBackground /> : <IndianThemedBackground />}
+
       <View style={croppingStyles.imageContainer} pointerEvents="box-none" {...imagePanResponder.panHandlers}>
         <Image
           source={{ uri: imageUri }}
@@ -642,6 +704,10 @@ const styles = StyleSheet.create({
   title: { fontSize: 24, fontWeight: 'bold', color: '#0038A8', marginBottom: 2 },
   subtitle: { fontSize: 14, color: '#666' },
   heartButton: { position: 'absolute', top: 20, right: 20, padding: 5 },
+  instructionBanner: { backgroundColor: '#fff3cd', marginHorizontal: 20, marginBottom: 15, padding: 15, borderRadius: 12, borderLeftWidth: 4, borderLeftColor: '#ffc107' },
+  bannerText: { fontSize: 14, color: '#856404', fontWeight: '600', textAlign: 'center', lineHeight: 20 },
+  themeButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginHorizontal: 20, marginBottom: 15, paddingVertical: 12, paddingHorizontal: 15, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#dee2e6', gap: 8 },
+  themeButtonText: { fontSize: 14, fontWeight: '600', color: '#0038A8' },
   featuresButton: { margin: 20, borderRadius: 12, overflow: 'hidden' },
   featuresGradient: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 15, paddingHorizontal: 20 },
   featuresButtonText: { color: 'white', fontSize: 16, fontWeight: '600', marginLeft: 8 },
