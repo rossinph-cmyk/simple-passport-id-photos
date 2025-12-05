@@ -13,10 +13,10 @@ export interface ThemeColors {
 export const getThemeColors = (theme: AppTheme): ThemeColors => {
   if (theme === 'american') {
     return {
-      primary: '#B22234',    // Red
+      primary: '#BF0A30',    // Sharp Red (official US flag red)
       secondary: '#FFFFFF',  // White
-      tertiary: '#3C3B6E',   // Blue
-      buttonGradient: ['#B22234', '#3C3B6E'],
+      tertiary: '#002868',   // True Blue (official US flag blue)
+      buttonGradient: ['#BF0A30', '#002868'],
     };
   } else {
     return {
