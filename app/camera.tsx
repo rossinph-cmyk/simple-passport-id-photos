@@ -12,7 +12,6 @@ import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { router } from 'expo-router';
 import { X, RotateCcw, Circle } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
-import { Paths, File } from 'expo-file-system';
 
 export default function CameraScreen() {
   const [facing, setFacing] = useState<CameraType>('front');
@@ -62,29 +61,10 @@ export default function CameraScreen() {
           quality: 1,
           base64: false,
         });
-        
+
         if (photo) {
-          let imageUri = photo.uri;
-          
-          // For mobile, copy to permanent location to prevent file not found errors
-          if (Platform.OS !== 'web') {
-            try {
-              const fileName = `camera_${Date.now()}.jpg`;
-              const targetFile = new File(Paths.document, fileName);
-              const sourceFile = new File(imageUri);
+          const imageUri = photo.uri;
 
-              // Copy file to permanent location (synchronous)
-              sourceFile.copy(targetFile);
-
-              // Verify the copy was successful
-              if (targetFile.exists) {
-                imageUri = targetFile.uri;
-              }
-            } catch (copyError) {
-              // Continue with original URI if copy fails
-            }
-          }
-          
           // Navigate back to home with the image URI as a parameter
           router.replace({
             pathname: '/',

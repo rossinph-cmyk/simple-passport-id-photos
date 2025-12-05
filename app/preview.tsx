@@ -17,7 +17,7 @@ import { X, Download, Image as ImageIcon } from 'lucide-react-native';
 import * as MediaLibrary from 'expo-media-library';
 import * as Haptics from 'expo-haptics';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { Paths, File } from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 
@@ -80,23 +80,6 @@ export default function PreviewScreen() {
       } else {
         // For mobile, use ImageManipulator with better error handling
         try {
-          // First, check if the image file exists
-          const imageFile = new File(imageUri);
-          if (!imageFile.exists) {
-
-            Alert.alert(
-              'Image Not Found',
-              'The selected image could not be found. Please select a new image.',
-              [
-                {
-                  text: 'Select New Image',
-                  onPress: () => router.replace('/')
-                }
-              ]
-            );
-            return;
-          }
-          
           // Use provided original dimensions or get them from the image
           let actualWidth: number;
           let actualHeight: number;
@@ -309,14 +292,8 @@ export default function PreviewScreen() {
           try {
 
             
-            // Check if the file exists before trying to save
-            const finalFile = new File(finalImageUri);
-            if (!finalFile.exists) {
-              throw new Error('Generated image file does not exist');
-            }
-            
 
-            
+
             // Save the final image to gallery
             const asset = await MediaLibrary.createAssetAsync(finalImageUri);
 
@@ -659,10 +636,10 @@ export default function PreviewScreen() {
           );
           const padding = Math.round(DPI * 0.2);
           const whiteSourceUrl = 'https://singlecolorimage.com/get/ffffff/10x10.png';
-          const targetFile = new File(Paths.cache, `white_${Date.now()}.png`);
-          const downloadedFile = await File.downloadFileAsync(whiteSourceUrl, targetFile);
+          const targetPath = `${FileSystem.cacheDirectory}white_${Date.now()}.png`;
+          const downloadResult = await FileSystem.downloadAsync(whiteSourceUrl, targetPath);
           const whiteBackground = await ImageManipulator.manipulateAsync(
-            downloadedFile.uri,
+            downloadResult.uri,
             [{ resize: { width: paperWidthPx, height: paperHeightPx } }],
             { compress: 1.0, format: ImageManipulator.SaveFormat.JPEG }
           );
@@ -739,17 +716,11 @@ export default function PreviewScreen() {
   // Helper function to convert image to base64
   const convertImageToBase64 = async (imageUri: string): Promise<string> => {
     try {
-      const imageFile = new File(imageUri);
-      // Use bytes() method from expo-file-system which returns Uint8Array
-      const uint8Array = await imageFile.bytes();
-
-      // Convert to base64 using btoa
-      let binary = '';
-      const len = uint8Array.byteLength;
-      for (let i = 0; i < len; i++) {
-        binary += String.fromCharCode(uint8Array[i]);
-      }
-      return btoa(binary);
+      // Use legacy FileSystem API to read as base64
+      const base64 = await FileSystem.readAsStringAsync(imageUri, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+      return base64;
     } catch (error) {
 
       throw error;

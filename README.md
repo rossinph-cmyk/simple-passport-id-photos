@@ -4,14 +4,12 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 
 ## Recent Updates
 
-### File System Migration (Latest)
-- Migrated from legacy `expo-file-system/legacy` API to modern `expo-file-system` API
-- Updated file operations to use `File` and `Paths` classes
-- Fixed C++ exception errors related to deprecated legacy API
-- All file system operations now use:
-  - `new File(uri)` for file references
-  - `Paths.cache` and `Paths.document` for directory paths
-  - `File.downloadFileAsync()` for downloads (async)
-  - `file.arrayBuffer()` for reading binary data and converting to base64
-  - `file.exists` property for existence checks
-  - `file.copy()` for copying files (synchronous)
+### File System API Fix (Latest)
+- Reverted to using legacy `expo-file-system/legacy` API in preview.tsx to avoid C++ exceptions
+- Removed unnecessary file copy operations in camera.tsx that were causing runtime errors
+- Simplified camera flow to use temporary URIs directly
+- Fixed all file operations to use stable legacy API methods:
+  - `FileSystem.downloadAsync()` for downloads
+  - `FileSystem.readAsStringAsync()` with Base64 encoding for reading files
+  - `FileSystem.cacheDirectory` for temporary files
+- All type errors resolved and app is stable

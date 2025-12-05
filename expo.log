@@ -40,5 +40,8 @@ The following packages should be updated for best compatibility with the install
 Your project may not work correctly until you install the expected versions of the packages.
 Waiting on http://localhost:8081
 Logs for your project will appear below.
-iOS Bundled 2154ms node_modules/expo-router/entry.js (3145 modules)
-iOS Bundled 87ms node_modules/expo-router/entry.js (1 module)
+iOS Bundled 2175ms node_modules/expo-router/entry.js (3155 modules)
+iOS Bundled 2214ms node_modules/expo-router/entry.js (1 module)
+iOS Bundled 2232ms node_modules/expo-router/entry.js (1 module)
+iOS Bundled 2288ms node_modules/expo-router/entry.js (1 module)
+iOS Bundled 73ms node_modules/expo-router/entry.js (1 module)
