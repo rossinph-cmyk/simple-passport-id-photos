@@ -6,26 +6,26 @@ Create professional passport ID photos in seconds with AI-powered framing and au
 
 ### Background Theme Feature (Latest)
 - **Full-screen translucent themed backgrounds**
-  - American theme: Full American flag pattern (red/white stripes with blue canton and stars) at 15% opacity covering the entire app background
-  - Indian theme: Full Indian flag pattern (saffron/white/green stripes with Ashoka Chakra) at 15% opacity covering the entire app background
-  - Semi-transparent white panels (95% opacity) overlay the themed background for content sections
-  - Creates an immersive patriotic atmosphere throughout the app
+  - American theme: Full American flag pattern (red/white stripes with blue canton and stars) at 35% opacity covering the entire app background
+  - Hindu theme: Full Indian flag pattern (saffron/white/green stripes with Ashoka Chakra) at 35% opacity covering the entire app background
+  - Semi-transparent white panels (92% opacity) overlay the themed background for content sections
+  - Creates an immersive patriotic/cultural atmosphere throughout the app
 - **Dynamic theme colors with pure, vibrant flag colors**
   - American theme uses pure colors: Crimson Red (#DC143C) and Pure Blue (#0000FF)
-  - Indian theme uses official Indian flag colors: Saffron (#FF9933) and Green (#138808)
+  - Hindu theme uses official Indian flag colors: Saffron (#FF9933) and Green (#138808)
   - All buttons use theme-specific gradient colors
   - Title, icons, and UI elements change to match selected theme
 - **Authentic flag icons in header**
   - American theme displays a proper mini American flag with:
     - Red and white horizontal stripes
     - Blue canton with white stars
-  - Indian theme displays an authentic Indian flag with:
+  - Hindu theme displays an authentic Indian flag with:
     - Saffron, white, and green horizontal stripes
     - Blue Ashoka Chakra (wheel with 8 spokes) in the center of the white stripe
   - Flag icon changes dynamically based on selected theme
 - Added prominent instruction banner with visual guidance
 - Theme selection persists using AsyncStorage
-- Easy-to-use theme switcher with flag emojis
+- Easy-to-use theme switcher (American 🇺🇸 / Hindu 🕉️)
 - Fixed infinite loop issue with useMemo for theme colors
 
 ### Complete Rebranding
